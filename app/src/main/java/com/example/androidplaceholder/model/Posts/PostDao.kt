@@ -1,4 +1,8 @@
 package com.example.androidplaceholder.model.Posts
 
-class PostDao {
-}
+data class PostDao (
+    val userId: Int?,
+    val id: Int?,
+    val title: String?,
+    val body: String?
+)

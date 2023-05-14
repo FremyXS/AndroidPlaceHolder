@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             android:id="@+id/nav_graph">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/postsContainerFragment">
 
+    <fragment
+        android:id="@+id/postsContainerFragment"
+        android:name="com.example.androidplaceholder.view.fragments.containers.PostsContainerFragment"
+        android:label="fragment_posts_container"
+        tools:layout="@layout/fragment_posts_container" >
+        <action
+            android:id="@+id/action_postsContainerFragment_to_postOpenFragment"
+            app:destination="@id/postOpenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/postOpenFragment"
+        android:name="com.example.androidplaceholder.view.fragments.cards.PostOpenFragment"
+        android:label="fragment_post_open"
+        tools:layout="@layout/fragment_post_open" />
 </navigation>

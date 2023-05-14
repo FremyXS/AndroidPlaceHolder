@@ -1,33 +1,35 @@
 package com.example.androidplaceholder.view.fragments.cards
 
+import android.content.ContentValues
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidplaceholder.R
+import com.example.androidplaceholder.api.RetrofitClient
+import com.example.androidplaceholder.api.interfaces.CommentInterface
+import com.example.androidplaceholder.databinding.FragmentPostOpenBinding
+import com.example.androidplaceholder.model.Comments.Comment
+import com.example.androidplaceholder.model.Posts.Post
+import com.example.androidplaceholder.view.fragments.adapters.CommentsContainerAdapter
+import com.example.androidplaceholder.viewmodel.CommentViewModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [PostOpenFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class PostOpenFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private lateinit var bind: FragmentPostOpenBinding
+    private lateinit var commentsContainerAdapter: CommentsContainerAdapter
+    private lateinit var commentViewModel: CommentViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
@@ -35,26 +37,66 @@ class PostOpenFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_post_open, container, false)
+        bind = FragmentPostOpenBinding.inflate(inflater, container, false)
+
+        commentViewModel = ViewModelProvider(this).get(CommentViewModel::class.java)
+        commentsContainerAdapter = CommentsContainerAdapter()
+
+        bindAdapter()
+
+//        var list: MutableList<Comment> = mutableListOf()
+//
+//        list.add(Comment(1, 1, "One User", "one@email.com", "asfa;ksf;sajflk;sjafl;ksjaflja;ljsflksajfajsflksa"))
+//        list.add(Comment(1, 1, "One User", "one@email.com", "asfa;ksf;sajflk;sjafl;ksjaflja;ljsflksajfajsflksa"))
+//        list.add(Comment(1, 1, "One User", "one@email.com", "asfa;ksf;sajflk;sjafl;ksjaflja;ljsflksajfajsflksa"))
+//        list.add(Comment(1, 1, "One User", "one@email.com", "asfa;ksf;sajflk;sjafl;ksjaflja;ljsflksajfajsflksa"))
+//        list.add(Comment(1, 1, "One User", "one@email.com", "asfa;ksf;sajflk;sjafl;ksjaflja;ljsflksajfajsflksa"))
+//        list.add(Comment(1, 1, "One User", "one@email.com", "asfa;ksf;sajflk;sjafl;ksjaflja;ljsflksajfajsflksa"))
+//        list.add(Comment(1, 1, "One User", "one@email.com", "asfa;ksf;sajflk;sjafl;ksjaflja;ljsflksajfajsflksa"))
+//
+//        commentsContainerAdapter.submitList(list)
+
+        val layoutManager = LinearLayoutManager(
+            context,
+            LinearLayoutManager.VERTICAL,
+            false
+        )
+
+        bind.commentsContainer.layoutManager = layoutManager
+
+        bind.commentsContainer.adapter = commentsContainerAdapter
+
+        return bind.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment PostOpenFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            PostOpenFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        bind.userName.text = arguments?.getString("user")
+        bind.postTitle.text = arguments?.getString("post_title")
+        bind.postBody.text = arguments?.getString("post_body")
+        bind.postCountComments.text = arguments?.getString("post_count_comments").plus(" comments")
+    }
+
+    private fun bindAdapter(){
+        commentViewModel.getCommentsList().observe(viewLifecycleOwner, Observer{
+            comments -> commentsContainerAdapter.submitList(comments)
+        })
+
+        val apiService = RetrofitClient.getRetrofit().create(CommentInterface::class.java)
+        val call = apiService.getCommentListByPostId((arguments?.getString("post_id")!!).toInt())
+
+        call.enqueue(object : Callback<List<Comment>> {
+            override fun onResponse(call: Call<List<Comment>>, response: Response<List<Comment>>) {
+                val comments = response.body()
+                if(comments != null){
+                    commentViewModel.setCommentsList(comments)
                 }
             }
+
+            override fun onFailure(call: Call<List<Comment>>, t: Throwable) {
+                Log.e(ContentValues.TAG, "Error: ${t.message}")
+            }
+        })
     }
 }

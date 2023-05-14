@@ -1,4 +1,6 @@
 package com.example.androidplaceholder.model.Users
 
-class UserDao {
-}
+data class UserDao(
+    val id: Int?,
+    val name: String,
+)
