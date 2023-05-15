@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidplaceholder.R
 import com.example.androidplaceholder.api.RetrofitClient
@@ -54,6 +55,11 @@ class PostOpenFragment : Fragment() {
         bind.postTitle.text = arguments?.getString("post_title")
         bind.postBody.text = arguments?.getString("post_body")
         bind.postCountComments.text = arguments?.getInt("post_count_comments").toString().plus(" comments")
+
+        bind.topBar.title = arguments?.getString("post_title")
+        bind.topBar.setNavigationOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun bindAdapter(){
