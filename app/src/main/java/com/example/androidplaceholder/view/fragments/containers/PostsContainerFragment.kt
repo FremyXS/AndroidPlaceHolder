@@ -43,8 +43,6 @@ class PostsContainerFragment : Fragment(), PostsContainerAdapter.Listener {
         postViewModel = ViewModelProvider(this).get(PostViewModel::class.java)
         bindAdapter()
 
-
-
         return bind.root
     }
 
