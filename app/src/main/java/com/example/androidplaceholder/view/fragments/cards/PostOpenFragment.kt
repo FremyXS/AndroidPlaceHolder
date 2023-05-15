@@ -44,17 +44,23 @@ class PostOpenFragment : Fragment() {
 
         bindAdapter()
 
-//        var list: MutableList<Comment> = mutableListOf()
-//
-//        list.add(Comment(1, 1, "One User", "one@email.com", "asfa;ksf;sajflk;sjafl;ksjaflja;ljsflksajfajsflksa"))
-//        list.add(Comment(1, 1, "One User", "one@email.com", "asfa;ksf;sajflk;sjafl;ksjaflja;ljsflksajfajsflksa"))
-//        list.add(Comment(1, 1, "One User", "one@email.com", "asfa;ksf;sajflk;sjafl;ksjaflja;ljsflksajfajsflksa"))
-//        list.add(Comment(1, 1, "One User", "one@email.com", "asfa;ksf;sajflk;sjafl;ksjaflja;ljsflksajfajsflksa"))
-//        list.add(Comment(1, 1, "One User", "one@email.com", "asfa;ksf;sajflk;sjafl;ksjaflja;ljsflksajfajsflksa"))
-//        list.add(Comment(1, 1, "One User", "one@email.com", "asfa;ksf;sajflk;sjafl;ksjaflja;ljsflksajfajsflksa"))
-//        list.add(Comment(1, 1, "One User", "one@email.com", "asfa;ksf;sajflk;sjafl;ksjaflja;ljsflksajfajsflksa"))
-//
-//        commentsContainerAdapter.submitList(list)
+        return bind.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        bind.userName.text = arguments?.getString("user")
+        bind.postTitle.text = arguments?.getString("post_title")
+        bind.postBody.text = arguments?.getString("post_body")
+        bind.postCountComments.text = arguments?.getInt("post_count_comments").toString().plus(" comments")
+    }
+
+    private fun bindAdapter(){
+        commentViewModel.getCommentsList().observe(viewLifecycleOwner, Observer{
+            comments -> commentsContainerAdapter.submitList(comments)
+        })
+        commentViewModel.setCommentsList(arguments?.getInt("post_id")!!)
 
         val layoutManager = LinearLayoutManager(
             context,
@@ -65,38 +71,5 @@ class PostOpenFragment : Fragment() {
         bind.commentsContainer.layoutManager = layoutManager
 
         bind.commentsContainer.adapter = commentsContainerAdapter
-
-        return bind.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        bind.userName.text = arguments?.getString("user")
-        bind.postTitle.text = arguments?.getString("post_title")
-        bind.postBody.text = arguments?.getString("post_body")
-        bind.postCountComments.text = arguments?.getString("post_count_comments").plus(" comments")
-    }
-
-    private fun bindAdapter(){
-        commentViewModel.getCommentsList().observe(viewLifecycleOwner, Observer{
-            comments -> commentsContainerAdapter.submitList(comments)
-        })
-
-        val apiService = RetrofitClient.getRetrofit().create(CommentInterface::class.java)
-        val call = apiService.getCommentListByPostId((arguments?.getString("post_id")!!).toInt())
-
-        call.enqueue(object : Callback<List<Comment>> {
-            override fun onResponse(call: Call<List<Comment>>, response: Response<List<Comment>>) {
-                val comments = response.body()
-                if(comments != null){
-                    commentViewModel.setCommentsList(comments)
-                }
-            }
-
-            override fun onFailure(call: Call<List<Comment>>, t: Throwable) {
-                Log.e(ContentValues.TAG, "Error: ${t.message}")
-            }
-        })
     }
 }

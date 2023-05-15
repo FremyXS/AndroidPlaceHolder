@@ -42,13 +42,7 @@ class PostsContainerFragment : Fragment(), PostsContainerAdapter.Listener {
         postsContainerAdapter = PostsContainerAdapter(this)
         postViewModel = ViewModelProvider(this).get(PostViewModel::class.java)
         bindAdapter()
-        bind.container.layoutManager = LinearLayoutManager(
-            context,
-            LinearLayoutManager.VERTICAL,
-            false
-        )
 
-        bind.container.adapter = postsContainerAdapter
 
 
         return bind.root
@@ -60,31 +54,24 @@ class PostsContainerFragment : Fragment(), PostsContainerAdapter.Listener {
             postList -> postsContainerAdapter.submitList(postList)
         })
 
+        postViewModel.setList()
 
-        val apiService = RetrofitClient.getRetrofit().create(PostInterface::class.java)
-        val call = apiService.getPostList()
+        bind.container.layoutManager = LinearLayoutManager(
+            context,
+            LinearLayoutManager.VERTICAL,
+            false
+        )
 
-        call.enqueue(object : Callback<List<PostDao>> {
-            override fun onResponse(call: Call<List<PostDao>>, response: Response<List<PostDao>>) {
-                val posts = response.body()
-                if(posts != null){
-                    postViewModel.setList(posts)
-                }
-            }
-
-            override fun onFailure(call: Call<List<PostDao>>, t: Throwable) {
-                Log.e(ContentValues.TAG, "Error: ${t.message}")
-            }
-        })
+        bind.container.adapter = postsContainerAdapter
     }
 
     override fun onClick(post: Post) {
         val bundle = Bundle()
         bundle.putString("user", post.userFullName)
-        bundle.putString("post_id", post.id.toString())
+        bundle.putInt("post_id", post.id!!)
         bundle.putString("post_title", post.title)
         bundle.putString("post_body", post.body)
-        bundle.putString("post_count_comments", post.countComments.toString())
+        bundle.putInt("post_count_comments", post.countComments!!)
 
         findNavController().navigate(R.id.action_postsContainerFragment_to_postOpenFragment, bundle)
     }

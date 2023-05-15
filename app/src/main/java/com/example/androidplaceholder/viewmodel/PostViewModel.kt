@@ -51,14 +51,33 @@ class PostViewModel() : ViewModel() {
         }
     }
 
-    fun setList(postsList: List<PostDao>){
+    private suspend fun getPostList(): List<PostDao>? {
+        val apiService = RetrofitClient.getRetrofit().create(PostInterface::class.java)
+        val call = apiService.getPostList()
+
+        return try{
+            val res = call.awaitResponse()
+            res.body()
+        }catch (e: Exception) {
+            Log.e(ContentValues.TAG, "Error: ${e.message}")
+            listOf<PostDao>()
+        }
+    }
+    fun setList(postsList: List<PostDao>? = null){
 
         viewModelScope.launch {
+            var newPostList: List<PostDao>? = null
             val newPostsList: MutableList<Post> = mutableListOf()
             val usersList = async { getUserName() }
             val commentList = async { getComments() }
+            if(postsList == null){
+                newPostList = (async { getPostList() }).await()
+            }
+            else{
+                newPostList = postsList
+            }
 
-            for (post in postsList){
+            for (post in newPostList!!){
                 val newPost = Post(
                     post.id,
                     (usersList.await())!!.filter { it.id == post.userId }.firstOrNull()!!.name,
@@ -72,9 +91,6 @@ class PostViewModel() : ViewModel() {
 
             postListLiveData.value = newPostsList
         }
-
-
-
     }
 
     fun getList(): LiveData<List<Post>> {
