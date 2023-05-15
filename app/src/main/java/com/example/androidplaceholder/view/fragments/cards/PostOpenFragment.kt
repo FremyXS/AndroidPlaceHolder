@@ -17,7 +17,7 @@ import com.example.androidplaceholder.api.interfaces.CommentInterface
 import com.example.androidplaceholder.databinding.FragmentPostOpenBinding
 import com.example.androidplaceholder.model.Comments.Comment
 import com.example.androidplaceholder.model.Posts.Post
-import com.example.androidplaceholder.view.fragments.adapters.CommentsContainerAdapter
+import com.example.androidplaceholder.view.adapters.CommentsContainerAdapter
 import com.example.androidplaceholder.viewmodel.CommentViewModel
 import retrofit2.Call
 import retrofit2.Callback

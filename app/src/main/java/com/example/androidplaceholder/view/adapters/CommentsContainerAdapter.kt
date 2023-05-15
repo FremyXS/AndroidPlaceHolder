@@ -1,4 +1,4 @@
-package com.example.androidplaceholder.view.fragments.adapters
+package com.example.androidplaceholder.view.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

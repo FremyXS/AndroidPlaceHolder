@@ -1,4 +1,4 @@
-package com.example.androidplaceholder.view.fragments.adapters
+package com.example.androidplaceholder.view.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.androidplaceholder.databinding.FragmentPostCardBinding
 import com.example.androidplaceholder.model.Posts.Post
 
-class PostsContainerAdapter(private val listener: Listener): ListAdapter<Post, RecyclerView.ViewHolder>(PostDiffUtil()) {
+class PostsContainerAdapter(private val listener: Listener): ListAdapter<Post, RecyclerView.ViewHolder>(
+    PostDiffUtil()
+) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val bind = FragmentPostCardBinding.inflate(

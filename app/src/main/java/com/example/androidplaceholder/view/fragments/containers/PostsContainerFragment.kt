@@ -17,7 +17,7 @@ import com.example.androidplaceholder.api.interfaces.PostInterface
 import com.example.androidplaceholder.databinding.FragmentPostsContainerBinding
 import com.example.androidplaceholder.model.Posts.Post
 import com.example.androidplaceholder.model.Posts.PostDao
-import com.example.androidplaceholder.view.fragments.adapters.PostsContainerAdapter
+import com.example.androidplaceholder.view.adapters.PostsContainerAdapter
 import com.example.androidplaceholder.viewmodel.PostViewModel
 import retrofit2.Call
 import retrofit2.Callback
