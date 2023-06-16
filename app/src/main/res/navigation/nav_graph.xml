@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/postsContainerFragment"
-        android:name="com.example.androidplaceholder.view.fragments.containers.PostsContainerFragment"
+        android:name="com.example.androidplaceholder.presentation.fragments.PostsContainerFragment"
         android:label="fragment_posts_container"
         tools:layout="@layout/fragment_posts_container" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/postOpenFragment"
-        android:name="com.example.androidplaceholder.view.fragments.cards.PostOpenFragment"
+        android:name="com.example.androidplaceholder.presentation.fragments.PostOpenFragment"
         android:label="fragment_post_open"
         tools:layout="@layout/fragment_post_open" />
 </navigation>

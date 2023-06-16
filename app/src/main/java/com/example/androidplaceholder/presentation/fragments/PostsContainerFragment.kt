@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidplaceholder.R
 import com.example.androidplaceholder.databinding.FragmentPostsContainerBinding
 import com.example.androidplaceholder.model.Posts.Post
-import com.example.androidplaceholder.view.adapters.PostsContainerAdapter
-import com.example.androidplaceholder.viewmodel.PostViewModel
+import com.example.androidplaceholder.presentation.adapters.PostsContainerAdapter
+import com.example.androidplaceholder.presentation.viewmodels.PostViewModel
 
 class PostsContainerFragment : Fragment(), PostsContainerAdapter.Listener {
 

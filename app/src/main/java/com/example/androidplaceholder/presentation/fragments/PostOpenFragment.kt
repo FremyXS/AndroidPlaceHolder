@@ -10,8 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidplaceholder.databinding.FragmentPostOpenBinding
-import com.example.androidplaceholder.view.adapters.CommentsContainerAdapter
-import com.example.androidplaceholder.viewmodel.CommentViewModel
+import com.example.androidplaceholder.presentation.adapters.CommentsContainerAdapter
+import com.example.androidplaceholder.presentation.viewmodels.CommentViewModel
 
 class PostOpenFragment : Fragment() {
 

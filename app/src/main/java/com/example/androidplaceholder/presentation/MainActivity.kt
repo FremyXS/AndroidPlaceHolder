@@ -1,4 +1,4 @@
-package com.example.androidplaceholder
+package com.example.androidplaceholder.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
