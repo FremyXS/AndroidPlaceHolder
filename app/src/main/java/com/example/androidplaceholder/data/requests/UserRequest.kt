@@ -11,4 +11,8 @@ data class UserRequest (
     val username: String?,
     @SerializedName("email")
     val email: String?,
+    @SerializedName("phone")
+    val phone: String?,
+    @SerializedName("website")
+    val website: String?,
 )

@@ -7,13 +7,17 @@ sealed class UserDefault (
     open val name: String?,
     open val username: String?,
     open val email: String?,
+    open val phone: String?,
+    open val website: String?
 ){
     data class User(
         override val id: Int?,
         override val name: String?,
         override val username: String?,
         override val email: String?,
-    ) : UserDefault(id, name, username, email)
+        override val phone: String?,
+        override val website: String?,
+    ) : UserDefault(id, name, username, email, phone, website)
 
     companion object{
         fun getUser(userRequest: UserRequest): User {
@@ -21,7 +25,9 @@ sealed class UserDefault (
                 userRequest.id,
                 userRequest.name,
                 userRequest.username,
-                userRequest.email
+                userRequest.email,
+                userRequest.phone,
+                userRequest.website
             )
         }
     }

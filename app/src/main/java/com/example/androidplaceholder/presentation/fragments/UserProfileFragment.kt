@@ -6,13 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidplaceholder.R
+import com.example.androidplaceholder.data.models.ProfileInfo
 import com.example.androidplaceholder.databinding.FragmentUserProfileBinding
+import com.example.androidplaceholder.presentation.adapters.ProfileInfoAdapter
 
 
 class UserProfileFragment : Fragment() {
 
     private lateinit var bind: FragmentUserProfileBinding
+    private lateinit var profileInfoAdapter: ProfileInfoAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -26,7 +30,29 @@ class UserProfileFragment : Fragment() {
             container,
             false
         )
-        // Inflate the layout for this fragment
+
+        profileInfoAdapter = ProfileInfoAdapter()
+        val contacts = mutableListOf<ProfileInfo.ProfileInfoContacts>()
+        val temps = listOf("email", "phone", "website")
+        val temps2 = listOf("hot@mail.com", "+7(999)-555-35-35", "poshel-nahuy")
+
+        for (i in 0..2){
+            contacts.add(ProfileInfo.ProfileInfoContacts(
+                temps[i],
+                temps2[i]
+            ))
+        }
+
+        profileInfoAdapter.submitList(contacts)
+
+        bind.container.layoutManager = LinearLayoutManager(
+            context,
+            LinearLayoutManager.VERTICAL,
+            false
+        )
+
+        bind.container.adapter = profileInfoAdapter
+
         return bind.root
     }
 

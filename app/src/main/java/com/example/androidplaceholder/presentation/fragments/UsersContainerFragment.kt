@@ -38,6 +38,8 @@ class UsersContainerFragment : Fragment(), UsersContainerAdapter.Listener {
                 "User",
                 "User",
                 "User",
+                "+7(888)-555-35-35",
+                "user@hotass.org"
             )
 
             users.add(user)
@@ -51,8 +53,6 @@ class UsersContainerFragment : Fragment(), UsersContainerAdapter.Listener {
             GridLayoutManager.VERTICAL,
             false
         )
-
-
 
         bind.container.layoutManager = layout
 
