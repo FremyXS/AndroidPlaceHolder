@@ -48,6 +48,7 @@
             android:textSize="20sp"/>
     </LinearLayout>
     <com.google.android.material.tabs.TabLayout
+        android:id="@+id/profile_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:tabMode="fixed"
@@ -70,9 +71,9 @@
             app:labelVisibilityMode="unlabeled"/>
 
     </com.google.android.material.tabs.TabLayout>
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
