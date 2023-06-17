@@ -2,6 +2,7 @@ package com.example.androidplaceholder.data.remote
 
 
 import com.example.androidplaceholder.data.models.*
+import com.example.androidplaceholder.data.requests.PhotoRequest
 import com.example.androidplaceholder.data.requests.PostRequest
 import com.example.androidplaceholder.data.requests.UserRequest
 import retrofit2.Response
@@ -24,4 +25,10 @@ interface RetrofitService {
 
     @GET("users/{id}")
     suspend fun getUserById(@Path("id") id: Int): Response<UserRequest>
+
+    @GET("albums")
+    suspend fun getAlbumList(): Response<List<Album>>
+
+    @GET("photos")
+    suspend fun getPhotoListByAlbumId(@Query("albumId") id: Int): Response<List<PhotoRequest>>
 }
