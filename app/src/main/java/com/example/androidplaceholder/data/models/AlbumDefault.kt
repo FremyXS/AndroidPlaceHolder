@@ -1,5 +1,7 @@
 package com.example.androidplaceholder.data.models
 
+import com.example.androidplaceholder.data.requests.AlbumRequest
+
 sealed class AlbumDefault(
     open val userId: Int?,
     open val id: Int?,
@@ -19,4 +21,14 @@ sealed class AlbumDefault(
         val userFullName: String,
         val countPhotos: Int?
     ) : AlbumDefault(userId, id, title)
+
+    companion object {
+        fun getAlbum(albumRequest: AlbumRequest): Album {
+            return Album(
+                albumRequest.userId,
+                albumRequest.id,
+                albumRequest.title
+            )
+        }
+    }
 }

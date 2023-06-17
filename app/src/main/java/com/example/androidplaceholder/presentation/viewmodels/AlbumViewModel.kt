@@ -3,17 +3,17 @@ package com.example.androidplaceholder.presentation.viewmodels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.androidplaceholder.data.models.PostDefault
-import com.example.androidplaceholder.domain.usecases.IGetPostsUseCase
+import com.example.androidplaceholder.data.models.AlbumDefault
+import com.example.androidplaceholder.domain.usecases.IGetAlbumsUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class PostViewModel @Inject constructor(private val useCase: IGetPostsUseCase) : ViewModel() {
+class AlbumViewModel @Inject constructor(private val useCase: IGetAlbumsUseCase) : ViewModel() {
 
-    private val postListLiveData: MutableLiveData<List<PostDefault.PostInfo>> =
-        MutableLiveData<List<PostDefault.PostInfo>>()
+    private val postListLiveData: MutableLiveData<List<AlbumDefault.AlbumInfo>> =
+        MutableLiveData<List<AlbumDefault.AlbumInfo>>()
 
     fun setList() {
         viewModelScope.launch {
@@ -24,8 +24,7 @@ class PostViewModel @Inject constructor(private val useCase: IGetPostsUseCase) :
         }
     }
 
-    fun getList(): MutableLiveData<List<PostDefault.PostInfo>> {
+    fun getList(): MutableLiveData<List<AlbumDefault.AlbumInfo>> {
         return postListLiveData
     }
-
 }

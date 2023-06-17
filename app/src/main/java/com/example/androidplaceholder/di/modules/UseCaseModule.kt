@@ -1,17 +1,17 @@
 package com.example.androidplaceholder.di.modules
 
-import com.example.androidplaceholder.domain.usecases.GetCommentsByPostIdUseCase
-import com.example.androidplaceholder.domain.usecases.GetPostsUseCase
-import com.example.androidplaceholder.domain.usecases.IGetCommentsByPostIdUseCase
-import com.example.androidplaceholder.domain.usecases.IGetPostsUseCase
+import com.example.androidplaceholder.domain.usecases.*
 import dagger.Binds
 import dagger.Module
 
 @Module
 abstract class UseCaseModule {
     @Binds
-    abstract fun getGetPostsUseCase(useCase: GetPostsUseCase): IGetPostsUseCase
+    abstract fun getPostsUseCase(useCase: GetPostsUseCase): IGetPostsUseCase
 
     @Binds
-    abstract fun getGetCommentsByPostIdUseCase(useCase: GetCommentsByPostIdUseCase): IGetCommentsByPostIdUseCase
+    abstract fun getCommentsByPostIdUseCase(useCase: GetCommentsByPostIdUseCase): IGetCommentsByPostIdUseCase
+
+    @Binds
+    abstract fun getAlbumsUseCase(useCase: GetAlbumsUseCase): IGetAlbumsUseCase
 }
