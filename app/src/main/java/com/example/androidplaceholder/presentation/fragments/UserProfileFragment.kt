@@ -43,7 +43,18 @@ class UserProfileFragment : Fragment() {
             ))
         }
 
-        profileInfoAdapter.submitList(contacts)
+        val posts = mutableListOf<ProfileInfo.ProfileInfoPost>()
+        val tempsPost = listOf("Title", "Title2", "Title3")
+        val temps2Post = listOf("BodyBodyBodyBodyBodyBody", "BodyBodyBodyBodyBodyBodyBody", "Body")
+
+        for (i in 0..10){
+            posts.add(ProfileInfo.ProfileInfoPost(
+                tempsPost[i % 3],
+                temps2Post[i % 3]
+            ))
+        }
+
+        profileInfoAdapter.submitList(posts as List<ProfileInfo>?)
 
         bind.container.layoutManager = LinearLayoutManager(
             context,

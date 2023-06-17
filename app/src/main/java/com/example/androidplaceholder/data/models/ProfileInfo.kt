@@ -5,4 +5,14 @@ sealed class ProfileInfo (){
         val label: String,
         val value: String
     ): ProfileInfo()
+
+    data class ProfileInfoPost(
+        val title: String,
+        val body: String
+    ): ProfileInfo()
+
+    enum class ProfileInfoType{
+        ProfileInfoContacts,
+        ProfileInfoPost,
+    }
 }
