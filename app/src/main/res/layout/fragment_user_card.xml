@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="110dp"
-    android:layout_height="110dp"
-    android:elevation="20dp">
-
-    <ImageView
+    android:layout_height="110dp">
+    <ImageButton
+        android:id="@+id/user_bt"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/ic_launcher_background"/>
-</com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

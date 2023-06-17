@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.androidplaceholder.R
 import com.example.androidplaceholder.data.models.UserDefault
 import com.example.androidplaceholder.databinding.FragmentUsersContainerBinding
 import com.example.androidplaceholder.presentation.adapters.UsersContainerAdapter
 
-class UsersContainerFragment : Fragment() {
+class UsersContainerFragment : Fragment(), UsersContainerAdapter.Listener {
 
     private lateinit var bind: FragmentUsersContainerBinding
     private lateinit var usersContainerAdapter: UsersContainerAdapter
@@ -26,7 +28,7 @@ class UsersContainerFragment : Fragment() {
     ): View? {
         bind = FragmentUsersContainerBinding.inflate(inflater, container, false)
 
-        usersContainerAdapter = UsersContainerAdapter()
+        usersContainerAdapter = UsersContainerAdapter(this)
 
         val users = mutableListOf<UserDefault.User>()
 
@@ -57,5 +59,9 @@ class UsersContainerFragment : Fragment() {
         bind.container.adapter = usersContainerAdapter;
 
         return bind.root
+    }
+
+    override fun onClick(user: UserDefault.User) {
+        findNavController().navigate(R.id.action_usersContainerFragment_to_userProfileFragment2)
     }
 }

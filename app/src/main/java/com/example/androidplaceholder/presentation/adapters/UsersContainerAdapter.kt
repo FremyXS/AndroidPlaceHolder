@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.androidplaceholder.data.models.UserDefault
 import com.example.androidplaceholder.databinding.FragmentUserCardBinding
 
-class UsersContainerAdapter() : ListAdapter<UserDefault.User, RecyclerView.ViewHolder>(UserDiffUtil()) {
+class UsersContainerAdapter(private val listener: Listener) : ListAdapter<UserDefault.User, RecyclerView.ViewHolder>(UserDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val bind = FragmentUserCardBinding.inflate(
@@ -21,12 +21,14 @@ class UsersContainerAdapter() : ListAdapter<UserDefault.User, RecyclerView.ViewH
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as UserItem).bind(getItem(position))
+        (holder as UserItem).bind(getItem(position), listener)
     }
 
     class UserItem(val bind: FragmentUserCardBinding) : RecyclerView.ViewHolder(bind.root){
-        fun bind(user: UserDefault.User) = with(bind){
-
+        fun bind(user: UserDefault.User, listener: Listener) = with(bind){
+            userBt.setOnClickListener{
+                listener.onClick(user)
+            }
         }
     }
 
@@ -38,5 +40,9 @@ class UsersContainerAdapter() : ListAdapter<UserDefault.User, RecyclerView.ViewH
         override fun areContentsTheSame(oldItem: UserDefault.User, newItem: UserDefault.User): Boolean {
             return oldItem == newItem
         }
+    }
+
+    interface Listener{
+        fun onClick(user: UserDefault.User)
     }
 }
