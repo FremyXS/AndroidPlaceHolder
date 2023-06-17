@@ -5,18 +5,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidplaceholder.R
 import com.example.androidplaceholder.data.models.ProfileInfo
 import com.example.androidplaceholder.databinding.FragmentUserProfileBinding
 import com.example.androidplaceholder.presentation.adapters.ProfileInfoAdapter
+import com.example.androidplaceholder.presentation.viewmodels.ProfileViewModel
+import com.google.android.material.tabs.TabLayout
 
 
 class UserProfileFragment : Fragment() {
 
     private lateinit var bind: FragmentUserProfileBinding
     private lateinit var profileInfoAdapter: ProfileInfoAdapter
+    private lateinit var profileViewModel: ProfileViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -31,30 +36,20 @@ class UserProfileFragment : Fragment() {
             false
         )
 
+        profileViewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
+
         profileInfoAdapter = ProfileInfoAdapter()
-        val contacts = mutableListOf<ProfileInfo.ProfileInfoContacts>()
-        val temps = listOf("email", "phone", "website")
-        val temps2 = listOf("hot@mail.com", "+7(999)-555-35-35", "poshel-nahuy")
+        bindAdapter()
 
-        for (i in 0..2){
-            contacts.add(ProfileInfo.ProfileInfoContacts(
-                temps[i],
-                temps2[i]
-            ))
-        }
+        return bind.root
+    }
 
-        val posts = mutableListOf<ProfileInfo.ProfileInfoPost>()
-        val tempsPost = listOf("Title", "Title2", "Title3")
-        val temps2Post = listOf("BodyBodyBodyBodyBodyBody", "BodyBodyBodyBodyBodyBodyBody", "Body")
+    private fun bindAdapter(){
+        profileViewModel.getList().observe(viewLifecycleOwner, Observer {
+            info -> profileInfoAdapter.submitList(info)
+        })
 
-        for (i in 0..10){
-            posts.add(ProfileInfo.ProfileInfoPost(
-                tempsPost[i % 3],
-                temps2Post[i % 3]
-            ))
-        }
-
-        profileInfoAdapter.submitList(posts as List<ProfileInfo>?)
+        profileViewModel.init()
 
         bind.container.layoutManager = LinearLayoutManager(
             context,
@@ -63,8 +58,42 @@ class UserProfileFragment : Fragment() {
         )
 
         bind.container.adapter = profileInfoAdapter
+    }
 
-        return bind.root
+    private fun onClickMenu(){
+
+        bind.profileMenu.addOnTabSelectedListener(object :
+            TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                val selectedTabIndex = tab.position
+
+                when(selectedTabIndex){
+                    0 -> profileViewModel.setCurrentContacts()
+                    1 -> profileViewModel.setCurrentPosts()
+                    2 -> profileViewModel.setCurrentPosts()
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab) {
+
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab) {
+
+            }
+
+        })
+//        bind.menuContacts.setOnClickListener{
+//            profileViewModel.setCurrentContacts()
+//        }
+//
+//        bind.menuPosts.setOnClickListener{
+//            profileViewModel.setCurrentPosts()
+//        }
+//
+//        bind.menuPhotos.setOnClickListener{
+//            profileViewModel.setCurrentContacts()
+//        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -84,12 +113,14 @@ class UserProfileFragment : Fragment() {
 //        bind.topBar.title = arguments?.getString("post_title")
 
         bind.userName.text = arguments?.getString("userFullName")
-        bind.fullName.text = arguments?.getString("userFullName")
+        bind.fullName.text = arguments?.getString("userName")
         bind.topBar.title = arguments?.getString("userFullName")
 
         bind.topBar.setNavigationOnClickListener {
             findNavController().popBackStack()
         }
+
+        onClickMenu()
 
     }
 

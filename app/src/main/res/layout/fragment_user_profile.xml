@@ -60,23 +60,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabMode="fixed"
-            android:background="@color/orange">
+            android:background="@color/orange"
+            android:contentDescription="profile menu">
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:icon="@drawable/profile_ic"
-                app:labelVisibilityMode="unlabeled"/>
+                />
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:icon="@drawable/posts_ic"
-                app:labelVisibilityMode="unlabeled"/>
+                android:icon="@drawable/posts_ic"/>
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:icon="@drawable/images_ic"
-                app:labelVisibilityMode="unlabeled"/>
+                android:icon="@drawable/images_ic"/>
 
         </com.google.android.material.tabs.TabLayout>
         <androidx.recyclerview.widget.RecyclerView
