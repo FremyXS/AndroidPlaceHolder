@@ -14,18 +14,6 @@ import javax.inject.Inject
 class CommentViewModel @Inject constructor(private val useCase : IGetCommentsByPostIdUseCase): ViewModel() {
     private val commentsListLiveData = MutableLiveData<List<Comment>>()
 
-//    private suspend fun getCommentListAsync(postId: Int): List<Comment>? {
-//        val apiService = RetrofitClient.getRetrofit().create(CommentInterface::class.java)
-//        val call = apiService.getCommentListByPostId(postId)
-//
-//        return try{
-//            val res = call.awaitResponse()
-//            res.body()
-//        }catch (e: Exception) {
-//            Log.e(ContentValues.TAG, "Error: ${e.message}")
-//            listOf<Comment>()
-//        }
-//    }
     fun getCommentsList(): MutableLiveData<List<Comment>> {
 
         return commentsListLiveData

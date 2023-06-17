@@ -1,8 +1,5 @@
 package com.example.androidplaceholder.di.modules
 
-import com.example.androidplaceholder.data.models.Comment
-import com.example.androidplaceholder.data.models.PostDefault
-import com.example.androidplaceholder.data.models.UserDefault
 import com.example.androidplaceholder.data.remote.RetrofitService
 import dagger.Module
 import dagger.Provides

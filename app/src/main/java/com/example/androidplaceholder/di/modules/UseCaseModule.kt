@@ -6,7 +6,6 @@ import com.example.androidplaceholder.domain.usecases.IGetCommentsByPostIdUseCas
 import com.example.androidplaceholder.domain.usecases.IGetPostsUseCase
 import dagger.Binds
 import dagger.Module
-import javax.inject.Singleton
 
 @Module
 abstract class UseCaseModule {
