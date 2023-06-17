@@ -53,6 +53,7 @@ class UserProfileFragment : Fragment() {
         bind.topBar.setNavigationOnClickListener {
             findNavController().popBackStack()
         }
+
     }
 
 }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/profile_info_background">
+    <TextView
+        android:id="@+id/info_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="info label"
+        android:textSize="18dp"
+        android:layout_marginBottom="8dp"/>
+    <TextView
+        android:id="@+id/info_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="info value"
+        android:textSize="20dp"/>
+
+</LinearLayout>
