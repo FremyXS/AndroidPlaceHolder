@@ -27,7 +27,7 @@ interface RetrofitService {
     suspend fun getUserById(@Path("id") id: Int): Response<UserRequest>
 
     @GET("albums")
-    suspend fun getAlbumList(): Response<List<Album>>
+    suspend fun getAlbumList(): Response<List<AlbumDefault>>
 
     @GET("photos")
     suspend fun getPhotoListByAlbumId(@Query("albumId") id: Int): Response<List<PhotoRequest>>
