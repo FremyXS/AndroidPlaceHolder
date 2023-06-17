@@ -32,6 +32,24 @@ class UserProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+//        bundle.putInt("userId", user.id!!)
+//        bundle.putString("userFullName", user.name!!)
+//        bundle.putString("userName", user.username!!)
+//        bundle.putString("userEmail", user.email!!)
+
+
+//        bind.userName.text = arguments?.getString("user")
+//        bind.postTitle.text = arguments?.getString("post_title")
+//        bind.postBody.text = arguments?.getString("post_body")
+//        bind.postCountComments.text = arguments?.getInt("post_count_comments").toString().plus(" comments")
+//
+//        bind.topBar.title = arguments?.getString("post_title")
+
+        bind.userName.text = arguments?.getString("userFullName")
+        bind.fullName.text = arguments?.getString("userFullName")
+        bind.topBar.title = arguments?.getString("userFullName")
+
         bind.topBar.setNavigationOnClickListener {
             findNavController().popBackStack()
         }
