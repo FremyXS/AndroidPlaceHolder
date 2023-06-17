@@ -8,9 +8,9 @@ class GetCommentsByPostIdUseCase
     @Inject
     constructor(
         private val commentsRepository: ICommentsRepository,
-    ){
+    ): IGetCommentsByPostIdUseCase{
 
-    suspend operator fun invoke(idPost: Int): List<Comment> {
+    override suspend operator fun invoke(idPost: Int): List<Comment> {
         return commentsRepository.getCommentsByPostId(idPost)
     }
 }

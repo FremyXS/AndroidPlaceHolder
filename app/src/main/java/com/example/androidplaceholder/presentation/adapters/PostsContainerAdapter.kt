@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.androidplaceholder.data.models.PostDefault
 import com.example.androidplaceholder.databinding.FragmentPostCardBinding
-import com.example.androidplaceholder.model.Posts.Post
 
-class PostsContainerAdapter(private val listener: Listener): ListAdapter<Post, RecyclerView.ViewHolder>(
+class PostsContainerAdapter(private val listener: Listener): ListAdapter<PostDefault.PostInfo, RecyclerView.ViewHolder>(
     PostDiffUtil()
 ) {
 
@@ -31,7 +31,7 @@ class PostsContainerAdapter(private val listener: Listener): ListAdapter<Post, R
     }
 
     class PostItem(val bind: FragmentPostCardBinding): RecyclerView.ViewHolder(bind.root){
-        fun bind(post: Post, context: Context, listener: Listener) = with(bind){
+        fun bind(post: PostDefault.PostInfo, context: Context, listener: Listener) = with(bind){
             titlePost.text = post.title
             bodyPost.text = post.body
             countCommentsPost.text = post.countComments.toString()
@@ -42,18 +42,18 @@ class PostsContainerAdapter(private val listener: Listener): ListAdapter<Post, R
         }
     }
 
-    class PostDiffUtil : DiffUtil.ItemCallback<Post>(){
-        override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
+    class PostDiffUtil : DiffUtil.ItemCallback<PostDefault.PostInfo>(){
+        override fun areItemsTheSame(oldItem: PostDefault.PostInfo, newItem: PostDefault.PostInfo): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: Post, newItem: Post): Boolean {
+        override fun areContentsTheSame(oldItem: PostDefault.PostInfo, newItem: PostDefault.PostInfo): Boolean {
             return oldItem == newItem
         }
 
     }
 
     interface Listener{
-        fun onClick(post: Post)
+        fun onClick(post: PostDefault.PostInfo)
     }
 }

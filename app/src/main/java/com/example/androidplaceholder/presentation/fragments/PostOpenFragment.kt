@@ -12,12 +12,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidplaceholder.databinding.FragmentPostOpenBinding
 import com.example.androidplaceholder.presentation.adapters.CommentsContainerAdapter
 import com.example.androidplaceholder.presentation.viewmodels.CommentViewModel
+import javax.inject.Inject
 
 class PostOpenFragment : Fragment() {
 
     private lateinit var bind: FragmentPostOpenBinding
     private lateinit var commentsContainerAdapter: CommentsContainerAdapter
-    private lateinit var commentViewModel: CommentViewModel
+
+    @Inject
+    lateinit var commentViewModel: CommentViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -12,22 +12,22 @@ class GetPostsUseCase
         private val postRepository: IPostsRepository,
         private val usersRepository: IUsersRepository,
         private val commentsRepository: ICommentsRepository
-    ){
+    ): IGetPostsUseCase{
 
-    suspend operator fun invoke(): MutableList<PostDefault.PostInfo> {
+    override suspend operator fun invoke(): MutableList<PostDefault.PostInfo> {
         val posts = postRepository.getPosts()
         val users = usersRepository.getUsers()
         val comments = commentsRepository.getComments()
 
-        val infoPosts: MutableList<PostDefault.PostInfo> = mutableListOf()
+        val infoPosts = mutableListOf<PostDefault.PostInfo>()
 
         for(post in posts){
             val infoPost = PostDefault.PostInfo(
-                post.id,
-                users.filter { it.id == post.userId }.firstOrNull()!!.name,
+                post.userId,
                 post.id,
                 post.title,
                 post.body,
+                users.filter { it.id == post.userId }.firstOrNull()!!.name,
                 comments.filter { it.postId == post.id }.size
             )
 

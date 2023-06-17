@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.androidplaceholder.data.models.Comment
 import com.example.androidplaceholder.databinding.FragmentCommentCardBinding
-import com.example.androidplaceholder.model.Comments.Comment
 
 class CommentsContainerAdapter: ListAdapter<Comment, RecyclerView.ViewHolder>(CommentViewHolder()) {
 

@@ -10,19 +10,24 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidplaceholder.R
+import com.example.androidplaceholder.data.models.PostDefault
 import com.example.androidplaceholder.databinding.FragmentPostsContainerBinding
 import com.example.androidplaceholder.model.Posts.Post
 import com.example.androidplaceholder.presentation.adapters.PostsContainerAdapter
 import com.example.androidplaceholder.presentation.viewmodels.PostViewModel
+import javax.inject.Inject
 
 class PostsContainerFragment : Fragment(), PostsContainerAdapter.Listener {
 
     private lateinit var bind: FragmentPostsContainerBinding
-    private lateinit var postViewModel: PostViewModel
     private lateinit var postsContainerAdapter: PostsContainerAdapter
+
+    @Inject
+    lateinit var postViewModel: PostViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
     override fun onCreateView(
@@ -32,7 +37,7 @@ class PostsContainerFragment : Fragment(), PostsContainerAdapter.Listener {
         bind = FragmentPostsContainerBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
         postsContainerAdapter = PostsContainerAdapter(this)
-        postViewModel = ViewModelProvider(this).get(PostViewModel::class.java)
+        postViewModel.setList()
         bindAdapter()
 
         return bind.root
@@ -55,7 +60,7 @@ class PostsContainerFragment : Fragment(), PostsContainerAdapter.Listener {
         bind.container.adapter = postsContainerAdapter
     }
 
-    override fun onClick(post: Post) {
+    override fun onClick(post: PostDefault.PostInfo) {
         val bundle = Bundle()
         bundle.putString("user", post.userFullName)
         bundle.putInt("post_id", post.id!!)

@@ -1,8 +1,8 @@
 package com.example.androidplaceholder.di.modules
 
 import com.example.androidplaceholder.data.models.Comment
-import com.example.androidplaceholder.data.models.Post
-import com.example.androidplaceholder.data.models.User
+import com.example.androidplaceholder.data.models.PostDefault
+import com.example.androidplaceholder.data.models.UserDefault
 import com.example.androidplaceholder.data.remote.RetrofitService
 import dagger.Module
 import dagger.Provides
@@ -19,7 +19,9 @@ class NetworkModule {
         .build()
 
     private val retrofitService = retrofit.create(RetrofitService::class.java)
-
+    @Provides
+    fun getApi() : RetrofitService=
+        retrofitService
     @Provides
     suspend fun getCommentList(): List<Comment> {
         return retrofitService.getCommentList()
@@ -31,17 +33,17 @@ class NetworkModule {
     }
 
     @Provides
-    suspend fun getPostList(): List<Post> {
+    suspend fun getPostList(): List<PostDefault.Post> {
         return retrofitService.getPostList()
     }
 
     @Provides
-    suspend fun getUserList(): List<User> {
+    suspend fun getUserList(): List<UserDefault.User> {
         return retrofitService.getUserList()
     }
 
     @Provides
-    suspend fun getUserById(id: Int): User {
+    suspend fun getUserById(id: Int): UserDefault.User {
         return retrofitService.getUserById(id)
     }
 }
