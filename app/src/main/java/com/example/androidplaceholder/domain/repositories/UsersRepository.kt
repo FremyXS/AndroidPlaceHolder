@@ -7,10 +7,22 @@ import javax.inject.Inject
 class UsersRepository
     @Inject constructor(private val retrofitService: RetrofitService) : IUsersRepository{
     override suspend fun getUsers(): List<UserDefault.User> {
-        TODO("Not yet implemented")
+        val response = retrofitService.getUserList()
+        if (response.isSuccessful) {
+
+            val users = mutableListOf<UserDefault.User>()
+
+            for (user in response.body()!!){
+                users.add(UserDefault.getUser(user))
+            }
+
+            return users
+        }
+        return listOf()
     }
 
     override suspend fun getUserById(id: Int): UserDefault.User {
-        TODO("Not yet implemented")
+        val response = retrofitService.getUserById(id)
+        return UserDefault.getUser(response.body()!!)
     }
 }

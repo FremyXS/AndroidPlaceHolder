@@ -1,5 +1,8 @@
 package com.example.androidplaceholder.data.models
 
+import com.example.androidplaceholder.data.requests.PostRequest
+import com.google.gson.annotations.SerializedName
+
 sealed class PostDefault(
     open val userId: Int?,
     open val id: Int?,
@@ -21,4 +24,15 @@ sealed class PostDefault(
         val userFullName: String?,
         val countComments: Int?
     ) : PostDefault(userId, id, title, body)
+
+    companion object{
+        fun getPost(postRequest: PostRequest): Post {
+            return Post(
+                postRequest.userId,
+                postRequest.id,
+                postRequest.title,
+                postRequest.body
+            )
+        }
+    }
 }

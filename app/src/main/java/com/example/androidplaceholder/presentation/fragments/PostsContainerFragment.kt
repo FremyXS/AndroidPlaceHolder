@@ -6,13 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidplaceholder.R
 import com.example.androidplaceholder.data.models.PostDefault
 import com.example.androidplaceholder.databinding.FragmentPostsContainerBinding
-import com.example.androidplaceholder.model.Posts.Post
+import com.example.androidplaceholder.di.DaggerAppComponent
 import com.example.androidplaceholder.presentation.adapters.PostsContainerAdapter
 import com.example.androidplaceholder.presentation.viewmodels.PostViewModel
 import javax.inject.Inject
@@ -27,7 +26,9 @@ class PostsContainerFragment : Fragment(), PostsContainerAdapter.Listener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        val component = DaggerAppComponent.builder()
+            .build()
+        component.inject(this)
     }
 
     override fun onCreateView(
@@ -37,7 +38,7 @@ class PostsContainerFragment : Fragment(), PostsContainerAdapter.Listener {
         bind = FragmentPostsContainerBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
         postsContainerAdapter = PostsContainerAdapter(this)
-        postViewModel.setList()
+//        postViewModel.setList()
         bindAdapter()
 
         return bind.root

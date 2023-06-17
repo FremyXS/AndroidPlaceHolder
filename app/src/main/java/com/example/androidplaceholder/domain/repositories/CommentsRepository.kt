@@ -7,10 +7,18 @@ import javax.inject.Inject
 class CommentsRepository
     @Inject constructor(private val retrofitService: RetrofitService) : ICommentsRepository{
     override suspend fun getComments(): List<Comment> {
-        TODO("Not yet implemented")
+        val response = retrofitService.getCommentList()
+        if (response.isSuccessful) {
+            return response.body()!!
+        }
+        return listOf()
     }
 
     override suspend fun getCommentsByPostId(postId: Int): List<Comment> {
-        TODO("Not yet implemented")
+        val response = retrofitService.getCommentListByPostId(postId)
+        if (response.isSuccessful) {
+            return response.body()!!
+        }
+        return listOf()
     }
 }

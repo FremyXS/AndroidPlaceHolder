@@ -13,4 +13,5 @@ import javax.inject.Singleton
 @Component(modules = [NetworkModule::class, RepositoryModule::class, UseCaseModule:: class])
 interface AppComponent {
     fun inject(activity: PostsContainerFragment)
+    fun inject(activity: PostOpenFragment)
 }

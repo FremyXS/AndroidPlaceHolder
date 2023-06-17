@@ -7,8 +7,16 @@ import javax.inject.Inject
 class PostsRepository
     @Inject constructor(private val retrofitService: RetrofitService) : IPostsRepository {
     override suspend fun getPosts(): List<PostDefault.Post> {
-        val posts = retrofitService.getPostList()
+        val response = retrofitService.getPostList()
+        if (response.isSuccessful) {
+            val posts = mutableListOf<PostDefault.Post>()
 
-        return posts
+            for (post in response.body()!!){
+                posts.add(PostDefault.getPost(post))
+            }
+
+            return posts
+        }
+        return listOf()
     }
 }

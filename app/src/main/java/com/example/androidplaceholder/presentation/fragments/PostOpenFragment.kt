@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidplaceholder.databinding.FragmentPostOpenBinding
+import com.example.androidplaceholder.di.DaggerAppComponent
 import com.example.androidplaceholder.presentation.adapters.CommentsContainerAdapter
 import com.example.androidplaceholder.presentation.viewmodels.CommentViewModel
 import javax.inject.Inject
@@ -24,6 +25,9 @@ class PostOpenFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val component = DaggerAppComponent.builder()
+            .build()
+        component.inject(this)
     }
 
     override fun onCreateView(
@@ -33,7 +37,7 @@ class PostOpenFragment : Fragment() {
         // Inflate the layout for this fragment
         bind = FragmentPostOpenBinding.inflate(inflater, container, false)
 
-        commentViewModel = ViewModelProvider(this).get(CommentViewModel::class.java)
+//        commentViewModel = ViewModelProvider(this).get(CommentViewModel::class.java)
         commentsContainerAdapter = CommentsContainerAdapter()
 
         bindAdapter()
