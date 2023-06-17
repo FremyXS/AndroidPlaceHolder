@@ -15,7 +15,8 @@ sealed class AlbumDefault(
         override val userId: Int?,
         override val id: Int?,
         override val title: String,
-        val userFullName: String?,
+        val img: String,
+        val userFullName: String,
         val countPhotos: Int?
     ) : AlbumDefault(userId, id, title)
 }
