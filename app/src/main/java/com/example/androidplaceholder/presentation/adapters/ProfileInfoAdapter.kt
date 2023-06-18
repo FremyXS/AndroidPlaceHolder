@@ -6,11 +6,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidplaceholder.data.models.ProfileInfo
+import com.example.androidplaceholder.data.models.UserDefault
 import com.example.androidplaceholder.databinding.FragmentProfileInfoCardBinding
 import com.example.androidplaceholder.databinding.FragmentProfilePostCardBinding
 
 
-class ProfileInfoAdapter: ListAdapter<ProfileInfo, RecyclerView.ViewHolder>(ProfileInfoDiffUtil()) {
+class ProfileInfoAdapter(private val listener: Listener): ListAdapter<ProfileInfo, RecyclerView.ViewHolder>(ProfileInfoDiffUtil()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when(viewType){
             ProfileInfo.ProfileInfoType.ProfileInfoContacts.ordinal ->{
@@ -49,7 +50,7 @@ class ProfileInfoAdapter: ListAdapter<ProfileInfo, RecyclerView.ViewHolder>(Prof
             ProfileInfo.ProfileInfoType.ProfileInfoContacts.ordinal ->
                 (holder as ProfileInfoContactsItem).bind(getItem(position) as ProfileInfo.ProfileInfoContacts)
             ProfileInfo.ProfileInfoType.ProfileInfoPost.ordinal ->
-                (holder as ProfileInfoPostItem).bind(getItem(position) as ProfileInfo.ProfileInfoPost)
+                (holder as ProfileInfoPostItem).bind(getItem(position) as ProfileInfo.ProfileInfoPost, listener)
         }
 
     }
@@ -72,9 +73,12 @@ class ProfileInfoAdapter: ListAdapter<ProfileInfo, RecyclerView.ViewHolder>(Prof
     }
 
     class ProfileInfoPostItem(val bind: FragmentProfilePostCardBinding) : RecyclerView.ViewHolder(bind.root){
-        fun bind(profileInfo: ProfileInfo.ProfileInfoPost) = with(bind){
+        fun bind(profileInfo: ProfileInfo.ProfileInfoPost, listener: Listener) = with(bind){
             bind.postTitle.text = profileInfo.title
             bind.postBody.text = profileInfo.body
+            bind.postId.setOnClickListener{
+                listener.onClick(profileInfo)
+            }
         }
     }
 
@@ -86,5 +90,9 @@ class ProfileInfoAdapter: ListAdapter<ProfileInfo, RecyclerView.ViewHolder>(Prof
         override fun areContentsTheSame(oldItem: ProfileInfo, newItem: ProfileInfo): Boolean {
             return oldItem == newItem
         }
+    }
+
+    interface Listener {
+        fun onClick(user: ProfileInfo.ProfileInfoPost)
     }
 }

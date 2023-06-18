@@ -20,7 +20,7 @@ import com.google.android.material.tabs.TabLayout
 import javax.inject.Inject
 
 
-class UserProfileFragment : Fragment() {
+class UserProfileFragment : Fragment(), ProfileInfoAdapter.Listener {
 
     private lateinit var bind: FragmentUserProfileBinding
     private lateinit var profileInfoAdapter: ProfileInfoAdapter
@@ -44,7 +44,7 @@ class UserProfileFragment : Fragment() {
             false
         )
 
-        profileInfoAdapter = ProfileInfoAdapter()
+        profileInfoAdapter = ProfileInfoAdapter(this)
 
         bindAdapter()
         onClickMenu()
@@ -116,6 +116,17 @@ class UserProfileFragment : Fragment() {
         }
 
 
+    }
+
+    override fun onClick(user: ProfileInfo.ProfileInfoPost) {
+        val bundle = Bundle()
+        bundle.putString("user", user.userFullName)
+        bundle.putInt("post_id", user.id!!)
+        bundle.putString("post_title", user.title)
+        bundle.putString("post_body", user.body)
+        bundle.putInt("post_count_comments", user.countComments!!)
+
+        findNavController().navigate(R.id.action_userProfileFragment2_to_postOpenFragment, bundle)
     }
 
 }

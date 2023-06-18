@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/postsContainerFragment">
+    app:startDestination="@id/usersContainerFragment">
 
     <fragment
         android:id="@+id/postsContainerFragment"
@@ -19,4 +19,22 @@
         android:name="com.example.androidplaceholder.presentation.fragments.PostOpenFragment"
         android:label="fragment_post_open"
         tools:layout="@layout/fragment_post_open" />
+    <fragment
+        android:id="@+id/usersContainerFragment"
+        android:name="com.example.androidplaceholder.presentation.fragments.UsersContainerFragment"
+        android:label="fragment_users_container"
+        tools:layout="@layout/fragment_users_container" >
+        <action
+            android:id="@+id/action_usersContainerFragment_to_userProfileFragment2"
+            app:destination="@id/userProfileFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/userProfileFragment2"
+        android:name="com.example.androidplaceholder.presentation.fragments.UserProfileFragment"
+        android:label="fragment_user_profile"
+        tools:layout="@layout/fragment_user_profile" >
+        <action
+            android:id="@+id/action_userProfileFragment2_to_postOpenFragment"
+            app:destination="@id/postOpenFragment" />
+    </fragment>
 </navigation>
