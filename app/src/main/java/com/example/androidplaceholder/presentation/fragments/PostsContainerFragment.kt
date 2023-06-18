@@ -36,7 +36,8 @@ class PostsContainerFragment : Fragment(), PostsContainerAdapter.Listener {
         savedInstanceState: Bundle?
     ): View? {
         bind = FragmentPostsContainerBinding.inflate(inflater, container, false)
-        // Inflate the layout for this fragment
+        onClickMenu()
+
         postsContainerAdapter = PostsContainerAdapter(this)
 
         bindAdapter()
@@ -61,6 +62,18 @@ class PostsContainerFragment : Fragment(), PostsContainerAdapter.Listener {
         bind.container.adapter = postsContainerAdapter
     }
 
+    private fun onClickMenu(){
+        bind.mainNavigation.selectedItemId = R.id.menu_post_icon
+        bind.mainNavigation.setOnItemSelectedListener{item->
+            when(item.itemId){
+                R.id.menu_profile_icon -> {
+                    findNavController().navigate(R.id.action_postsContainerFragment_to_usersContainerFragment, null)
+                    true
+                }
+                else -> false
+            }
+        }
+    }
     override fun onClick(post: PostDefault.PostInfo) {
         val bundle = Bundle()
         bundle.putString("user", post.userFullName)

@@ -38,7 +38,7 @@ class UsersContainerFragment : Fragment(), UsersContainerAdapter.Listener {
         savedInstanceState: Bundle?
     ): View? {
         bind = FragmentUsersContainerBinding.inflate(inflater, container, false)
-
+        onClickMenu()
         usersContainerAdapter = UsersContainerAdapter(this)
 
         bindAdapter()
@@ -63,6 +63,19 @@ class UsersContainerFragment : Fragment(), UsersContainerAdapter.Listener {
         bind.container.layoutManager = layout
 
         bind.container.adapter = usersContainerAdapter
+    }
+
+    private fun onClickMenu(){
+        bind.mainNavigation.selectedItemId = R.id.menu_profile_icon
+        bind.mainNavigation.setOnItemSelectedListener{item->
+            when(item.itemId){
+                R.id.menu_post_icon -> {
+                    findNavController().navigate(R.id.action_usersContainerFragment_to_postsContainerFragment, null)
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     override fun onClick(user: UserDefault.UserInfo) {
