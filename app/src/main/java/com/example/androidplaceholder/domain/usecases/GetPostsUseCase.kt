@@ -25,7 +25,7 @@ class GetPostsUseCase
                 post.id,
                 post.title,
                 post.body,
-                users.filter { it.id == post.userId }.firstOrNull()!!.name,
+                users.firstOrNull { it.id == post.userId }!!.name,
                 comments.filter { it.postId == post.id }.size
             )
 

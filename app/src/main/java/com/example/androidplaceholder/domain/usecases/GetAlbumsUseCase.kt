@@ -9,10 +9,12 @@ class GetAlbumsUseCase
 constructor(
     private val albumRepository: IAlbumsRepository,
     private val userRepository: IUsersRepository,
+    private val photoRepository: IPhotosRepository
 ) : IGetAlbumsUseCase {
     override suspend fun invoke(): MutableList<AlbumDefault.AlbumInfo> {
         val albums = albumRepository.getAlbums()
         val users = userRepository.getUsers()
+        val photos = photoRepository.getPhotos()
 
         val infoAlbums = mutableListOf<AlbumDefault.AlbumInfo>()
 
@@ -21,9 +23,11 @@ constructor(
                 album.userId,
                 album.id,
                 album.title,
+                photos.firstOrNull { it.albumId == album.id }!!.thumbnailUrl,
                 users.firstOrNull { it.id == album.userId }!!.name,
-                100
-                )
+                photos.filter { it.albumId == album.id }.size
+            )
+
             infoAlbums.add(infoAlbum)
         }
         return infoAlbums
