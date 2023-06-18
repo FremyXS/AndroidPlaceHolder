@@ -50,7 +50,7 @@ class PhotosContainerFragment : Fragment() {
             photosContainerAdapter.submitList(photos)
         })
 
-        photoContainerViewModel.setList(arguments?.getInt("albumId")!!)
+        photoContainerViewModel.setList(arguments?.getInt("album_id")!!)
 
         val layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
