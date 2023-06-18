@@ -1,5 +1,7 @@
 package com.example.androidplaceholder.data.models
 
+import com.example.androidplaceholder.data.requests.PhotoRequest
+
 sealed class Photo(
     open val albumId: Int?,
     open val id: Int?,
@@ -18,4 +20,24 @@ sealed class Photo(
         override val title: String,
         val url: String
     ) : Photo(albumId, id, title)
+
+    companion object {
+        fun getSmallPhoto(photoRequest: PhotoRequest): PhotoSmaller {
+            return PhotoSmaller(
+                photoRequest.albumId,
+                photoRequest.id,
+                photoRequest.title,
+                photoRequest.thumbnailUrl
+            )
+        }
+
+        fun getBigPhoto(photoRequest: PhotoRequest): PhotoBigger {
+            return PhotoBigger(
+                photoRequest.albumId,
+                photoRequest.id,
+                photoRequest.title,
+                photoRequest.url
+            )
+        }
+    }
 }

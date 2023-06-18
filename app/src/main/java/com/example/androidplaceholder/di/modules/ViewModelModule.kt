@@ -2,6 +2,7 @@ package com.example.androidplaceholder.di.modules
 
 import com.example.androidplaceholder.presentation.viewmodels.AlbumViewModel
 import com.example.androidplaceholder.presentation.viewmodels.CommentViewModel
+import com.example.androidplaceholder.presentation.viewmodels.PhotoViewModel
 import com.example.androidplaceholder.presentation.viewmodels.PostViewModel
 import dagger.Binds
 import dagger.Module
@@ -20,4 +21,8 @@ abstract class ViewModelModule {
     @Binds
     @Singleton
     abstract fun getAlbumViewModel(albumViewModel: AlbumViewModel): AlbumViewModel
+
+    @Binds
+    @Singleton
+    abstract fun getPhotoViewModel(photoViewModel: PhotoViewModel): PhotoViewModel
 }

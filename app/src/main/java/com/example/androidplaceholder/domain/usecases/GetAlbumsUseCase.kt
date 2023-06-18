@@ -14,7 +14,7 @@ constructor(
     override suspend fun invoke(): MutableList<AlbumDefault.AlbumInfo> {
         val albums = albumRepository.getAlbums()
         val users = userRepository.getUsers()
-        val photos = photoRepository.getPhotos()
+        val photos = photoRepository.getSmallPhotos()
 
         val infoAlbums = mutableListOf<AlbumDefault.AlbumInfo>()
 

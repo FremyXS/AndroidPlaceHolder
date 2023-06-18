@@ -14,4 +14,7 @@ abstract class UseCaseModule {
 
     @Binds
     abstract fun getAlbumsUseCase(useCase: GetAlbumsUseCase): IGetAlbumsUseCase
+
+    @Binds
+    abstract fun getPhotosByAlbumIdUseCase(useCase: GetPhotosByAlbumIdUseCase): IGetPhotosByAlbumIdUseCase
 }

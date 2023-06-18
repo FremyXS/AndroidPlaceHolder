@@ -31,5 +31,8 @@ interface RetrofitService {
     suspend fun getAlbumList(): Response<List<AlbumRequest>>
 
     @GET("photos")
+    suspend fun getPhotosList(): Response<List<PhotoRequest>>
+
+    @GET("photos")
     suspend fun getPhotoListByAlbumId(@Query("albumId") id: Int): Response<List<PhotoRequest>>
 }

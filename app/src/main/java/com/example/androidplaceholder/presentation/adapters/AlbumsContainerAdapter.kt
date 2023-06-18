@@ -20,7 +20,7 @@ class AlbumsContainerAdapter : ListAdapter<AlbumDefault.AlbumInfo, RecyclerView.
             parent,
             false
         )
-        return AlbumItem(bind);
+        return AlbumItem(bind)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

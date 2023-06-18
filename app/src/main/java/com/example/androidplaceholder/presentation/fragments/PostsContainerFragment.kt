@@ -69,6 +69,6 @@ class PostsContainerFragment : Fragment(), PostsContainerAdapter.Listener {
         bundle.putString("post_body", post.body)
         bundle.putInt("post_count_comments", post.countComments!!)
 
-        findNavController().navigate(R.id.action_postsContainerFragment_to_postOpenFragment, bundle)
+//        findNavController().navigate(R.id.action_postsContainerFragment_to_postOpenFragment, bundle)
     }
 }
