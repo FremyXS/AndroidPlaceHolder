@@ -65,7 +65,7 @@ class UsersContainerFragment : Fragment(), UsersContainerAdapter.Listener {
         bind.container.adapter = usersContainerAdapter
     }
 
-    override fun onClick(user: UserDefault.User) {
+    override fun onClick(user: UserDefault.UserInfo) {
 
         val bundle = Bundle()
         bundle.putInt("userId", user.id!!)
@@ -74,6 +74,7 @@ class UsersContainerFragment : Fragment(), UsersContainerAdapter.Listener {
         bundle.putString("userEmail", user.email!!)
         bundle.putString("userPhone", user.phone!!)
         bundle.putString("userWeb", user.website!!)
+        bundle.putString("userPhoto", user.photo)
 
         findNavController().navigate(R.id.action_usersContainerFragment_to_userProfileFragment2, bundle)
     }

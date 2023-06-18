@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.androidplaceholder.R
 import com.example.androidplaceholder.data.models.ProfileInfo
 import com.example.androidplaceholder.databinding.FragmentUserProfileBinding
@@ -108,6 +109,7 @@ class UserProfileFragment : Fragment() {
         bind.userName.text = arguments?.getString("userFullName")
         bind.fullName.text = arguments?.getString("userName")
         bind.topBar.title = arguments?.getString("userFullName")
+        Glide.with(bind.root).load(arguments?.getString("userPhoto")).into(bind.userPhoto)
 
         bind.topBar.setNavigationOnClickListener {
             findNavController().popBackStack()

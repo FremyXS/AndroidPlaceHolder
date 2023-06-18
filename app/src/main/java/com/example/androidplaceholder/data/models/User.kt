@@ -19,6 +19,16 @@ sealed class UserDefault (
         override val website: String?,
     ) : UserDefault(id, name, username, email, phone, website)
 
+    data class UserInfo(
+        override val id: Int?,
+        override val name: String?,
+        override val username: String?,
+        override val email: String?,
+        override val phone: String?,
+        override val website: String?,
+        val photo: String
+    ) : UserDefault(id, name, username, email, phone, website)
+
     companion object{
         fun getUser(userRequest: UserRequest): User {
             return User(
@@ -28,6 +38,18 @@ sealed class UserDefault (
                 userRequest.email,
                 userRequest.phone,
                 userRequest.website
+            )
+        }
+
+        fun getUserInfo(user: User, img: String): UserInfo {
+            return UserInfo(
+                user.id,
+                user.name,
+                user.username,
+                user.email,
+                user.phone,
+                user.website,
+                img
             )
         }
     }

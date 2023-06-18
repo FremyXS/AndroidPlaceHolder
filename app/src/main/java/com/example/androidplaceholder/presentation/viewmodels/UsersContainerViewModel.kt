@@ -15,7 +15,7 @@ class UsersContainerViewModel
         private val getUsersUseCase: IGetUsersUseCase
     ): ViewModel()
 {
-    private val usersLiveData = MutableLiveData<List<UserDefault.User>>()
+    private val usersLiveData = MutableLiveData<List<UserDefault.UserInfo>>()
 
     fun getUsers() = usersLiveData
 
