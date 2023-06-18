@@ -2,9 +2,18 @@ package com.example.androidplaceholder.presentation.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.androidplaceholder.data.models.ProfileInfo
+import com.example.androidplaceholder.domain.usecases.IGetPostsByUserIdUseCase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class ProfileViewModel: ViewModel() {
+class ProfileViewModel
+    @Inject constructor(
+        private val getPostUseCase: IGetPostsByUserIdUseCase
+    ): ViewModel() {
     private val currentInfo = MutableLiveData<ProfileInfo.ProfileInfoType>(ProfileInfo.ProfileInfoType.ProfileInfoContacts)
     private val contactsInfo = MutableLiveData<List<ProfileInfo.ProfileInfoContacts>>()
     private val postsInfo = MutableLiveData<List<ProfileInfo.ProfileInfoPost>>()
@@ -28,7 +37,7 @@ class ProfileViewModel: ViewModel() {
         }
     }
 
-    fun init(){
+    fun init(userId: Int){
         val contacts = mutableListOf<ProfileInfo.ProfileInfoContacts>()
         val temps = listOf("email", "phone", "website")
         val temps2 = listOf("hot@mail.com", "+7(999)-555-35-35", "poshel-nahuy")
@@ -42,17 +51,11 @@ class ProfileViewModel: ViewModel() {
 
         contactsInfo.value = contacts
 
-        val posts = mutableListOf<ProfileInfo.ProfileInfoPost>()
-        val tempsPost = listOf("Title", "Title2", "Title3")
-        val temps2Post = listOf("BodyBodyBodyBodyBodyBody", "BodyBodyBodyBodyBodyBodyBody", "Body")
-
-        for (i in 0..10){
-            posts.add(ProfileInfo.ProfileInfoPost(
-                tempsPost[i % 3],
-                temps2Post[i % 3]
-            ))
+        viewModelScope.launch {
+            val result = withContext(Dispatchers.IO) {
+                getPostUseCase.invoke(userId)
+            }
+            postsInfo.postValue(result)
         }
-
-        postsInfo.value = posts
     }
 }

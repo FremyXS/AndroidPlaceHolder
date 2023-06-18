@@ -38,7 +38,7 @@ class PostsContainerFragment : Fragment(), PostsContainerAdapter.Listener {
         bind = FragmentPostsContainerBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
         postsContainerAdapter = PostsContainerAdapter(this)
-//        postViewModel.setList()
+
         bindAdapter()
 
         return bind.root

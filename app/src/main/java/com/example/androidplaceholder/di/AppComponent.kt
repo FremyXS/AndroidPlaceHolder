@@ -6,6 +6,7 @@ import com.example.androidplaceholder.di.modules.UseCaseModule
 import com.example.androidplaceholder.presentation.MainActivity
 import com.example.androidplaceholder.presentation.fragments.PostOpenFragment
 import com.example.androidplaceholder.presentation.fragments.PostsContainerFragment
+import com.example.androidplaceholder.presentation.fragments.UserProfileFragment
 import dagger.Component
 import javax.inject.Singleton
 
@@ -14,4 +15,6 @@ import javax.inject.Singleton
 interface AppComponent {
     fun inject(activity: PostsContainerFragment)
     fun inject(activity: PostOpenFragment)
+
+    fun inject(activity: UserProfileFragment)
 }

@@ -12,18 +12,25 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidplaceholder.R
 import com.example.androidplaceholder.data.models.ProfileInfo
 import com.example.androidplaceholder.databinding.FragmentUserProfileBinding
+import com.example.androidplaceholder.di.DaggerAppComponent
 import com.example.androidplaceholder.presentation.adapters.ProfileInfoAdapter
 import com.example.androidplaceholder.presentation.viewmodels.ProfileViewModel
 import com.google.android.material.tabs.TabLayout
+import javax.inject.Inject
 
 
 class UserProfileFragment : Fragment() {
 
     private lateinit var bind: FragmentUserProfileBinding
     private lateinit var profileInfoAdapter: ProfileInfoAdapter
-    private lateinit var profileViewModel: ProfileViewModel
+
+    @Inject
+    lateinit var profileViewModel: ProfileViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val component = DaggerAppComponent.builder()
+            .build()
+        component.inject(this)
     }
 
     override fun onCreateView(
@@ -35,8 +42,6 @@ class UserProfileFragment : Fragment() {
             container,
             false
         )
-
-        profileViewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
 
         profileInfoAdapter = ProfileInfoAdapter()
 
@@ -55,7 +60,7 @@ class UserProfileFragment : Fragment() {
             profileInfoAdapter.submitList(profileViewModel.getList().value)
         })
 
-        profileViewModel.init()
+        profileViewModel.init(arguments?.getInt("userID")!!)
 
         bind.container.layoutManager = LinearLayoutManager(
             context,
