@@ -9,13 +9,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="info label"
-        android:textSize="18dp"
+        android:textSize="18sp"
+        android:fontFamily="@font/montserrat"
         android:layout_marginBottom="8dp"/>
     <TextView
         android:id="@+id/info_value"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="info value"
-        android:textSize="20dp"/>
+        android:fontFamily="@font/montserrat"
+        android:textSize="20sp"/>
 
 </LinearLayout>

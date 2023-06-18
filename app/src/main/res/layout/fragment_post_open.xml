@@ -36,6 +36,7 @@
                 android:layout_height="wrap_content"
                 android:text="User"
                 android:textSize="16sp"
+                android:fontFamily="@font/montserrat"
                 android:layout_marginTop="11dp"/>
 
             <TextView
@@ -44,6 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="11dp"
                 android:text="Title"
+                android:fontFamily="@font/montserrat"
                 android:textSize="24sp" />
 
             <TextView
@@ -52,12 +54,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="11dp"
                 android:textSize="18sp"
+                android:fontFamily="@font/montserrat"
                 android:text="Text Body" />
 
             <TextView
                 android:id="@+id/post_count_comments"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
                 android:text="0"
                 android:gravity="right"
                 android:layout_marginTop="20dp"

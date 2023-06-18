@@ -15,13 +15,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Title"
-            android:textSize="18dp"/>
+            android:textSize="18sp"
+            android:fontFamily="@font/montserrat"/>
         <TextView
             android:id="@+id/post_body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/test_text_post"
             android:maxHeight="26dp"
-            android:textSize="20dp"/>
+            android:textSize="20sp"
+            android:fontFamily="@font/montserrat"/>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

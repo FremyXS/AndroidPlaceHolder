@@ -17,17 +17,18 @@
             android:background="@color/orange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="6dp"
-            android:paddingBottom="6dp">
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="8dp">
 
             <TextView
                 android:id="@+id/title_post"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxWidth="300dp"
                 android:layout_marginStart="12dp"
+                android:maxWidth="300dp"
                 android:text="Ttile"
                 android:textSize="18sp"
+                android:fontFamily="@font/montserrat"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,17 +46,18 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="12dp">
+            android:padding="16dp">
 
             <TextView
                 android:id="@+id/body_post"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxHeight="210dp"
+                android:maxHeight="220dp"
                 android:text="@string/test_text_post"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:fontFamily="@font/montserrat" />
 
             <TextView
                 android:id="@+id/count_comments_post"
@@ -64,6 +66,7 @@
                 android:layout_marginTop="29dp"
                 android:text="15"
                 android:textSize="16sp"
+                android:fontFamily="@font/montserrat"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/body_post" />
 
@@ -73,6 +76,7 @@
                 android:layout_marginStart="4dp"
                 android:text="comments"
                 android:textSize="16sp"
+                android:fontFamily="@font/montserrat"
                 app:layout_constraintStart_toEndOf="@+id/count_comments_post"
                 app:layout_constraintTop_toTopOf="@+id/count_comments_post" />
 
@@ -83,6 +87,7 @@
                 android:layout_marginTop="29dp"
                 android:text="User"
                 android:textSize="16sp"
+                android:fontFamily="@font/montserrat"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/body_post" />
         </androidx.constraintlayout.widget.ConstraintLayout>
