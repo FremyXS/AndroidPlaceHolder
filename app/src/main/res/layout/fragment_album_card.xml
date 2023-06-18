@@ -27,8 +27,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
                 android:text="Ttile"
                 android:textSize="16sp"
+                android:maxLines="1"
+                android:maxLength="10"
+                android:ellipsize="end"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -73,6 +77,9 @@
                 android:layout_marginTop="20dp"
                 android:text="User"
                 android:textSize="12sp"
+                android:maxLines="1"
+                android:maxLength="10"
+                android:ellipsize="end"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_album" />
         </androidx.constraintlayout.widget.ConstraintLayout>

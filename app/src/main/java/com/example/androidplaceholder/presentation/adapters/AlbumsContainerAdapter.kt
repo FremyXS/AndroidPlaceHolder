@@ -30,8 +30,8 @@ class AlbumsContainerAdapter : ListAdapter<AlbumDefault.AlbumInfo, RecyclerView.
     class AlbumItem(private val bind: FragmentAlbumCardBinding) : RecyclerView.ViewHolder(bind.root){
         fun bind(album: AlbumDefault.AlbumInfo, context: Context) = with(bind) {
             titleAlbum.text = album.title
-            Glide.with(context).load(album.img)
-                .into(imgAlbum)
+//            Glide.with(context).load(album.img)
+//                .into(imgAlbum)
             countPhotosAlbum.text = album.countPhotos.toString()
             userNameAlbum.text = album.userFullName
         }

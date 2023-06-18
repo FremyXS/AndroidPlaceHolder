@@ -19,4 +19,8 @@
         android:name="com.example.androidplaceholder.presentation.fragments.PostOpenFragment"
         android:label="fragment_post_open"
         tools:layout="@layout/fragment_post_open" />
+<!--    <fragment-->
+<!--        android:id="@+id/albumsContainerFragment"-->
+<!--        android:name="com.example.androidplaceholder.presentation.fragments.AlbumsContainerFragment"-->
+<!--        android:label="AlbumsContainerFragment" />-->
 </navigation>

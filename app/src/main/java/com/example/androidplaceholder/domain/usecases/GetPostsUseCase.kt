@@ -1,9 +1,7 @@
 package com.example.androidplaceholder.domain.usecases
 
 import com.example.androidplaceholder.data.models.PostDefault
-import com.example.androidplaceholder.domain.repositories.ICommentsRepository
-import com.example.androidplaceholder.domain.repositories.IPostsRepository
-import com.example.androidplaceholder.domain.repositories.IUsersRepository
+import com.example.androidplaceholder.domain.repositories.*
 import javax.inject.Inject
 
 class GetPostsUseCase
