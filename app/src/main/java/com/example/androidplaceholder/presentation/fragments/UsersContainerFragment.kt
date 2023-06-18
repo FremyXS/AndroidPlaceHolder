@@ -68,6 +68,8 @@ class UsersContainerFragment : Fragment(), UsersContainerAdapter.Listener {
         bundle.putString("userFullName", user.name!!)
         bundle.putString("userName", user.username!!)
         bundle.putString("userEmail", user.email!!)
+        bundle.putString("userPhone", user.phone!!)
+        bundle.putString("userWeb", user.website!!)
 
         findNavController().navigate(R.id.action_usersContainerFragment_to_userProfileFragment2, bundle)
     }

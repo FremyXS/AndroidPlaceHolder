@@ -17,6 +17,9 @@ class ProfileViewModel: ViewModel() {
         currentInfo.value = ProfileInfo.ProfileInfoType.ProfileInfoPost
     }
 
+    fun getCurrent(): MutableLiveData<ProfileInfo.ProfileInfoType> {
+        return currentInfo
+    }
     fun getList(): MutableLiveData<out List<ProfileInfo>> {
         return when(currentInfo.value){
             ProfileInfo.ProfileInfoType.ProfileInfoPost -> postsInfo

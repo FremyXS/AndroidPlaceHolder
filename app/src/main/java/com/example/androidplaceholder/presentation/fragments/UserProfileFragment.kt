@@ -39,7 +39,9 @@ class UserProfileFragment : Fragment() {
         profileViewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
 
         profileInfoAdapter = ProfileInfoAdapter()
+
         bindAdapter()
+        onClickMenu()
 
         return bind.root
     }
@@ -47,6 +49,10 @@ class UserProfileFragment : Fragment() {
     private fun bindAdapter(){
         profileViewModel.getList().observe(viewLifecycleOwner, Observer {
             info -> profileInfoAdapter.submitList(info)
+        })
+
+        profileViewModel.getCurrent().observe(viewLifecycleOwner, Observer {
+            profileInfoAdapter.submitList(profileViewModel.getList().value)
         })
 
         profileViewModel.init()
@@ -71,6 +77,7 @@ class UserProfileFragment : Fragment() {
                     0 -> profileViewModel.setCurrentContacts()
                     1 -> profileViewModel.setCurrentPosts()
                     2 -> profileViewModel.setCurrentPosts()
+                    else -> profileViewModel.setCurrentPosts()
                 }
             }
 
@@ -83,34 +90,11 @@ class UserProfileFragment : Fragment() {
             }
 
         })
-//        bind.menuContacts.setOnClickListener{
-//            profileViewModel.setCurrentContacts()
-//        }
-//
-//        bind.menuPosts.setOnClickListener{
-//            profileViewModel.setCurrentPosts()
-//        }
-//
-//        bind.menuPhotos.setOnClickListener{
-//            profileViewModel.setCurrentContacts()
-//        }
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-//        bundle.putInt("userId", user.id!!)
-//        bundle.putString("userFullName", user.name!!)
-//        bundle.putString("userName", user.username!!)
-//        bundle.putString("userEmail", user.email!!)
-
-
-//        bind.userName.text = arguments?.getString("user")
-//        bind.postTitle.text = arguments?.getString("post_title")
-//        bind.postBody.text = arguments?.getString("post_body")
-//        bind.postCountComments.text = arguments?.getInt("post_count_comments").toString().plus(" comments")
-//
-//        bind.topBar.title = arguments?.getString("post_title")
 
         bind.userName.text = arguments?.getString("userFullName")
         bind.fullName.text = arguments?.getString("userName")
@@ -120,7 +104,6 @@ class UserProfileFragment : Fragment() {
             findNavController().popBackStack()
         }
 
-        onClickMenu()
 
     }
 
