@@ -2,29 +2,29 @@ package com.example.androidplaceholder.presentation.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.androidplaceholder.data.models.UserDefault
+import com.example.androidplaceholder.domain.usecases.IGetUsersUseCase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class UsersContainerViewModel: ViewModel() {
+class UsersContainerViewModel
+    @Inject constructor(
+        private val getUsersUseCase: IGetUsersUseCase
+    ): ViewModel()
+{
     private val usersLiveData = MutableLiveData<List<UserDefault.User>>()
 
     fun getUsers() = usersLiveData
 
     fun init(){
-        val users = mutableListOf<UserDefault.User>()
-
-        for (i in 0..10) {
-            val user = UserDefault.User(
-                i,
-                "User",
-                "User",
-                "User",
-                "+7(888)-555-35-35",
-                "user@hotass.org"
-            )
-
-            users.add(user)
+        viewModelScope.launch {
+            val result = withContext(Dispatchers.IO) {
+                getUsersUseCase.invoke()
+            }
+            usersLiveData.postValue(result)
         }
-
-        usersLiveData.postValue(users)
     }
 }

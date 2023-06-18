@@ -14,4 +14,7 @@ abstract class UseCaseModule {
 
     @Binds
     abstract fun getGetPostsByUserIdUseCase(useCase: GetPostsByUserIdUseCase): IGetPostsByUserIdUseCase
+
+    @Binds
+    abstract fun getGetUsersUseCase(useCase: GetUsersUseCase): IGetUsersUseCase
 }

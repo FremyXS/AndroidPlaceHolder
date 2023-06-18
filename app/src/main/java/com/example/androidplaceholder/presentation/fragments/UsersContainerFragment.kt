@@ -13,18 +13,24 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidplaceholder.R
 import com.example.androidplaceholder.data.models.UserDefault
 import com.example.androidplaceholder.databinding.FragmentUsersContainerBinding
+import com.example.androidplaceholder.di.DaggerAppComponent
 import com.example.androidplaceholder.presentation.adapters.UsersContainerAdapter
 import com.example.androidplaceholder.presentation.viewmodels.UsersContainerViewModel
+import javax.inject.Inject
 
 class UsersContainerFragment : Fragment(), UsersContainerAdapter.Listener {
 
     private lateinit var bind: FragmentUsersContainerBinding
     private lateinit var usersContainerAdapter: UsersContainerAdapter
-    private lateinit var usersContainerViewModel: UsersContainerViewModel
+
+    @Inject
+    lateinit var usersContainerViewModel: UsersContainerViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        val component = DaggerAppComponent.builder()
+            .build()
+        component.inject(this)
     }
 
     override fun onCreateView(
@@ -32,8 +38,6 @@ class UsersContainerFragment : Fragment(), UsersContainerAdapter.Listener {
         savedInstanceState: Bundle?
     ): View? {
         bind = FragmentUsersContainerBinding.inflate(inflater, container, false)
-
-        usersContainerViewModel = ViewModelProvider(this).get(UsersContainerViewModel::class.java)
 
         usersContainerAdapter = UsersContainerAdapter(this)
 
