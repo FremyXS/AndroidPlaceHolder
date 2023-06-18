@@ -37,10 +37,10 @@ class ProfileViewModel
         }
     }
 
-    fun init(userId: Int){
+    fun init(userId: Int, email: String, phone: String, web: String){
         val contacts = mutableListOf<ProfileInfo.ProfileInfoContacts>()
         val temps = listOf("email", "phone", "website")
-        val temps2 = listOf("hot@mail.com", "+7(999)-555-35-35", "poshel-nahuy")
+        val temps2 = listOf(email, phone, web)
 
         for (i in 0..2){
             contacts.add(ProfileInfo.ProfileInfoContacts(
