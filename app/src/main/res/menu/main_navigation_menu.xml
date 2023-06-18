@@ -9,5 +9,5 @@
         android:id="@+id/menu_profile_icon"
         android:enabled="true"
         android:title=""
-        android:icon="@drawable/profile_ic"/>
+        android:icon="@drawable/users_ic"/>
 </menu>
