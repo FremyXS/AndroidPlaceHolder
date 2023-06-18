@@ -5,17 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidplaceholder.R
 import com.example.androidplaceholder.data.models.UserDefault
 import com.example.androidplaceholder.databinding.FragmentUsersContainerBinding
 import com.example.androidplaceholder.presentation.adapters.UsersContainerAdapter
+import com.example.androidplaceholder.presentation.viewmodels.UsersContainerViewModel
 
 class UsersContainerFragment : Fragment(), UsersContainerAdapter.Listener {
 
     private lateinit var bind: FragmentUsersContainerBinding
     private lateinit var usersContainerAdapter: UsersContainerAdapter
+    private lateinit var usersContainerViewModel: UsersContainerViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,24 +33,21 @@ class UsersContainerFragment : Fragment(), UsersContainerAdapter.Listener {
     ): View? {
         bind = FragmentUsersContainerBinding.inflate(inflater, container, false)
 
+        usersContainerViewModel = ViewModelProvider(this).get(UsersContainerViewModel::class.java)
+
         usersContainerAdapter = UsersContainerAdapter(this)
 
-        val users = mutableListOf<UserDefault.User>()
+        bindAdapter()
 
-        for (i in 0..10) {
-            val user = UserDefault.User(
-                i,
-                "User",
-                "User",
-                "User",
-                "+7(888)-555-35-35",
-                "user@hotass.org"
-            )
+        return bind.root
+    }
 
-            users.add(user)
-        }
+    private fun bindAdapter() {
+        usersContainerViewModel.getUsers().observe(viewLifecycleOwner, Observer {
+                info -> usersContainerAdapter.submitList(info)
+        })
 
-        usersContainerAdapter.submitList(users)
+        usersContainerViewModel.init()
 
         val layout = GridLayoutManager(
             context,
@@ -56,9 +58,7 @@ class UsersContainerFragment : Fragment(), UsersContainerAdapter.Listener {
 
         bind.container.layoutManager = layout
 
-        bind.container.adapter = usersContainerAdapter;
-
-        return bind.root
+        bind.container.adapter = usersContainerAdapter
     }
 
     override fun onClick(user: UserDefault.User) {
