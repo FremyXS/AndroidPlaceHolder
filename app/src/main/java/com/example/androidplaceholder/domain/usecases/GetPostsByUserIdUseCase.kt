@@ -13,7 +13,8 @@ class GetPostsByUserIdUseCase
         private val commentsRepository: ICommentsRepository
     ): IGetPostsByUserIdUseCase {
     override suspend fun invoke(userId: Int): MutableList<ProfileInfo.ProfileInfoPost> {
-        val posts = postRepository.getPosts()
+        var posts = postRepository.getPosts()
+        posts = posts.filter { it -> it.userId == userId }
         val users = usersRepository.getUsers()
         val comments = commentsRepository.getComments()
 
@@ -31,8 +32,6 @@ class GetPostsByUserIdUseCase
 
             infoPosts.add(infoPost)
         }
-
-        infoPosts = infoPosts.filter { it.userId == userId }.toMutableList()
 
         return infoPosts
     }

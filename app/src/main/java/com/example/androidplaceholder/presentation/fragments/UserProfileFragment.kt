@@ -60,7 +60,7 @@ class UserProfileFragment : Fragment() {
             profileInfoAdapter.submitList(profileViewModel.getList().value)
         })
 
-        profileViewModel.init(arguments?.getInt("userID")!!)
+        profileViewModel.init(arguments?.getInt("userId")!!)
 
         bind.container.layoutManager = LinearLayoutManager(
             context,
