@@ -73,6 +73,10 @@ class UsersContainerFragment : Fragment(), UsersContainerAdapter.Listener {
                     findNavController().navigate(R.id.action_usersContainerFragment_to_postsContainerFragment, null)
                     true
                 }
+                R.id.menu_album_icon -> {
+                    findNavController().navigate(R.id.action_usersContainerFragment_to_albumsContainerFragment2, null)
+                    true
+                }
                 else -> false
             }
         }

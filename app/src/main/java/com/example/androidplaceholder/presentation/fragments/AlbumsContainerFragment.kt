@@ -37,7 +37,7 @@ class AlbumsContainerFragment : Fragment(), AlbumsContainerAdapter.Listener {
         savedInstanceState: Bundle?
     ): View? {
         bind = FragmentAlbumsContainerBinding.inflate(inflater, container, false)
-
+        onClickMenu()
         albumsContainerAdapter = AlbumsContainerAdapter(this)
 
         bindAdapter()
@@ -58,6 +58,22 @@ class AlbumsContainerFragment : Fragment(), AlbumsContainerAdapter.Listener {
         bind.container.adapter = albumsContainerAdapter
     }
 
+    private fun onClickMenu(){
+        bind.mainNavigation.selectedItemId = R.id.menu_album_icon
+        bind.mainNavigation.setOnItemSelectedListener{item->
+            when(item.itemId){
+                R.id.menu_profile_icon -> {
+                    findNavController().navigate(R.id.action_albumsContainerFragment2_to_usersContainerFragment, null)
+                    true
+                }
+                R.id.menu_post_icon -> {
+                    findNavController().navigate(R.id.action_albumsContainerFragment2_to_postsContainerFragment, null)
+                    true
+                }
+                else -> false
+            }
+        }
+    }
     override fun onClick(album: AlbumDefault.AlbumInfo) {
         val bundle = Bundle()
         bundle.putInt("albumId", album.id!!)

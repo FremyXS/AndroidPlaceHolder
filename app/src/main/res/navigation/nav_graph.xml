@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_postsContainerFragment_to_usersContainerFragment"
             app:destination="@id/usersContainerFragment" />
+        <action
+            android:id="@+id/action_postsContainerFragment_to_albumsContainerFragment2"
+            app:destination="@id/albumsContainerFragment2" />
     </fragment>
     <fragment
         android:id="@+id/usersContainerFragment"
@@ -28,6 +31,9 @@
         <action
             android:id="@+id/action_usersContainerFragment_to_postsContainerFragment"
             app:destination="@id/postsContainerFragment" />
+        <action
+            android:id="@+id/action_usersContainerFragment_to_albumsContainerFragment2"
+            app:destination="@id/albumsContainerFragment2" />
     </fragment>
     <fragment
         android:id="@+id/albumsContainerFragment2"
@@ -36,6 +42,12 @@
         <action
             android:id="@+id/action_albumsContainerFragment2_to_photosContainerFragment"
             app:destination="@id/photosContainerFragment" />
+        <action
+            android:id="@+id/action_albumsContainerFragment2_to_postsContainerFragment"
+            app:destination="@id/postsContainerFragment" />
+        <action
+            android:id="@+id/action_albumsContainerFragment2_to_usersContainerFragment"
+            app:destination="@id/usersContainerFragment" />
     </fragment>
     <fragment
         android:id="@+id/postOpenFragment"
