@@ -6,6 +6,11 @@
         android:title=""
         android:icon="@drawable/posts_ic"/>
     <item
+        android:id="@+id/menu_album_icon"
+        android:enabled="true"
+        android:title=""
+        android:icon="@drawable/images_ic"/>
+    <item
         android:id="@+id/menu_profile_icon"
         android:enabled="true"
         android:title=""
