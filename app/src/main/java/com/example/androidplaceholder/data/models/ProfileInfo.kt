@@ -15,8 +15,18 @@ sealed class ProfileInfo (){
         val countComments: Int?
     ): ProfileInfo()
 
+    data class ProfileInfoAlbum(
+        val userId: Int?,
+        val id: Int?,
+        val title: String?,
+        val img: String?,
+        val userFullName: String?,
+        val countPhotos: Int?
+    ): ProfileInfo()
+
     enum class ProfileInfoType{
         ProfileInfoContacts,
         ProfileInfoPost,
+        ProfileInfoAlbum,
     }
 }
