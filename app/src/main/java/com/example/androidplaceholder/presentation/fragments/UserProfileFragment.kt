@@ -86,7 +86,7 @@ class UserProfileFragment : Fragment(), ProfileInfoAdapter.Listener {
                 when(selectedTabIndex){
                     0 -> profileViewModel.setCurrentContacts()
                     1 -> profileViewModel.setCurrentPosts()
-                    2 -> profileViewModel.setCurrentPosts()
+                    2 -> profileViewModel.setCurrentAlbums()
                     else -> profileViewModel.setCurrentPosts()
                 }
             }
