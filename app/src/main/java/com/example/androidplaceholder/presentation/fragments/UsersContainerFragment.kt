@@ -89,6 +89,6 @@ class UsersContainerFragment : Fragment(), UsersContainerAdapter.Listener {
         bundle.putString("userWeb", user.website!!)
         bundle.putString("userPhoto", user.photo)
 
-        findNavController().navigate(R.id.action_usersContainerFragment_to_userProfileFragment2, bundle)
+        findNavController().navigate(R.id.action_usersContainerFragment_to_userProfileFragment, bundle)
     }
 }

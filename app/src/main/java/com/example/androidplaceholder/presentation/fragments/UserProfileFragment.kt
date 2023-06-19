@@ -126,7 +126,7 @@ class UserProfileFragment : Fragment(), ProfileInfoAdapter.Listener {
         bundle.putString("post_body", user.body)
         bundle.putInt("post_count_comments", user.countComments!!)
 
-        findNavController().navigate(R.id.action_userProfileFragment2_to_postOpenFragment, bundle)
+        findNavController().navigate(R.id.action_userProfileFragment_to_postOpenFragment, bundle)
     }
 
 }

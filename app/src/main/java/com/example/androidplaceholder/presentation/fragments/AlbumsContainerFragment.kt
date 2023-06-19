@@ -63,6 +63,6 @@ class AlbumsContainerFragment : Fragment(), AlbumsContainerAdapter.Listener {
         bundle.putInt("albumId", album.id!!)
         bundle.putString("albumUserFullName", album.userFullName)
         bundle.putString("albumTitle", album.title)
-        findNavController().navigate(R.id.action_albumsContainerFragment_to_photosContainerFragment, bundle)
+        findNavController().navigate(R.id.action_albumsContainerFragment2_to_photosContainerFragment, bundle)
     }
 }

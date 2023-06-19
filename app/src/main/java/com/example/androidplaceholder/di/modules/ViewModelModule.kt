@@ -27,7 +27,6 @@ abstract class ViewModelModule {
     @Binds
     @Singleton
     abstract fun getPhotoViewModel(photoViewModel: PhotoViewModel): PhotoViewModel
-    abstract fun getCommentViewModel(commentViewModelViewModel: CommentViewModel) : CommentViewModel
 
     @Binds
     @Singleton

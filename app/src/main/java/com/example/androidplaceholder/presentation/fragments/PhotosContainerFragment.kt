@@ -73,6 +73,6 @@ class PhotosContainerFragment : Fragment(), PhotosContainerAdapter.Listener {
         bundle.putString("photoUrl", photo.url)
         bundle.putString("photoTitle", photo.title)
         bundle.putString("photoUserFullName", arguments?.getString("albumUserFullName")!!)
-        findNavController().navigate(R.id.action_photosContainerFragment_to_photoOpenFragment, bundle)
+        findNavController().navigate(R.id.action_photosContainerFragment_to_photoOpenFragment2, bundle)
     }
 }
