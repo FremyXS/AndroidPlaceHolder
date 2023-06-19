@@ -105,6 +105,10 @@ class ProfileInfoAdapter(private val listener: Listener): ListAdapter<ProfileInf
             Glide.with(context)
                 .load(profileInfo.img)
                 .into(albumImageId)
+
+            albumBtId.setOnClickListener {
+                listener.onClick(profileInfo, ProfileInfo.ProfileInfoType.ProfileInfoAlbum)
+            }
         }
     }
 

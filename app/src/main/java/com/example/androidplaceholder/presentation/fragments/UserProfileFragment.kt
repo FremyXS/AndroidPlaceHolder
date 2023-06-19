@@ -136,7 +136,7 @@ class UserProfileFragment : Fragment(), ProfileInfoAdapter.Listener {
                 bundle.putInt("albumId", temp.id!!)
                 bundle.putString("albumUserFullName", temp.userFullName)
                 bundle.putString("albumTitle", temp.title)
-                findNavController().navigate(R.id.action_albumsContainerFragment2_to_photosContainerFragment, bundle)
+                findNavController().navigate(R.id.action_userProfileFragment_to_photosContainerFragment, bundle)
             }
             else -> {}
         }
