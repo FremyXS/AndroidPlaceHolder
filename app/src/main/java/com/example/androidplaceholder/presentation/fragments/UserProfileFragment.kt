@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -118,15 +117,30 @@ class UserProfileFragment : Fragment(), ProfileInfoAdapter.Listener {
 
     }
 
-    override fun onClick(user: ProfileInfo.ProfileInfoPost) {
+    override fun onClick(info: ProfileInfo, type: ProfileInfo.ProfileInfoType) {
         val bundle = Bundle()
-        bundle.putString("user", user.userFullName)
-        bundle.putInt("post_id", user.id!!)
-        bundle.putString("post_title", user.title)
-        bundle.putString("post_body", user.body)
-        bundle.putInt("post_count_comments", user.countComments!!)
 
-        findNavController().navigate(R.id.action_userProfileFragment_to_postOpenFragment, bundle)
+        when(type){
+            ProfileInfo.ProfileInfoType.ProfileInfoPost ->{
+                val temp: ProfileInfo.ProfileInfoPost = info as ProfileInfo.ProfileInfoPost
+                bundle.putString("user", temp.userFullName)
+                bundle.putInt("post_id", temp.id!!)
+                bundle.putString("post_title", temp.title)
+                bundle.putString("post_body", temp.body)
+                bundle.putInt("post_count_comments", temp.countComments!!)
+
+                findNavController().navigate(R.id.action_userProfileFragment_to_postOpenFragment, bundle)
+            }
+            ProfileInfo.ProfileInfoType.ProfileInfoAlbum -> {
+                val temp: ProfileInfo.ProfileInfoAlbum = info as ProfileInfo.ProfileInfoAlbum
+                bundle.putInt("albumId", temp.id!!)
+                bundle.putString("albumUserFullName", temp.userFullName)
+                bundle.putString("albumTitle", temp.title)
+                findNavController().navigate(R.id.action_albumsContainerFragment2_to_photosContainerFragment, bundle)
+            }
+            else -> {}
+        }
+
     }
 
 }

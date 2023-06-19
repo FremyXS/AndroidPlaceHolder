@@ -93,7 +93,7 @@ class ProfileInfoAdapter(private val listener: Listener): ListAdapter<ProfileInf
             bind.postTitle.text = profileInfo.title
             bind.postBody.text = profileInfo.body
             bind.postId.setOnClickListener{
-                listener.onClick(profileInfo)
+                listener.onClick(profileInfo, ProfileInfo.ProfileInfoType.ProfileInfoPost)
             }
         }
     }
@@ -119,6 +119,6 @@ class ProfileInfoAdapter(private val listener: Listener): ListAdapter<ProfileInf
     }
 
     interface Listener {
-        fun onClick(user: ProfileInfo.ProfileInfoPost)
+        fun onClick(user: ProfileInfo, type: ProfileInfo.ProfileInfoType)
     }
 }
