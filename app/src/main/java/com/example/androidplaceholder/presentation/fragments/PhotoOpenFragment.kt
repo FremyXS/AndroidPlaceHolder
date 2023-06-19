@@ -37,6 +37,7 @@ class PhotoOpenFragment : Fragment() {
 
         Glide.with(bind.root)
             .load(arguments?.getString("photoUrl")!!)
+            .placeholder(R.drawable.animated_loading)
             .into(bind.photoImgId)
 
         bind.topBar.title = arguments?.getString("photoTitle")!!

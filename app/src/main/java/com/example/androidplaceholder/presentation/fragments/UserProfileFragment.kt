@@ -108,7 +108,10 @@ class UserProfileFragment : Fragment(), ProfileInfoAdapter.Listener {
         bind.userName.text = arguments?.getString("userFullName")
         bind.fullName.text = arguments?.getString("userName")
         bind.topBar.title = arguments?.getString("userFullName")
-        Glide.with(bind.root).load(arguments?.getString("userPhoto")).into(bind.userPhoto)
+        Glide.with(bind.root)
+            .load(arguments?.getString("userPhoto"))
+            .placeholder(R.drawable.animated_loading)
+            .into(bind.userPhoto)
 
         bind.topBar.setNavigationOnClickListener {
             findNavController().popBackStack()
