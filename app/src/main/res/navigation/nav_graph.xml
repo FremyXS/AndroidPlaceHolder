@@ -3,13 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/usersContainerFragment">
-
+    app:startDestination="@id/postsContainerFragment">
     <fragment
-        android:id="@+id/postsContainerFragment"
-        android:name="com.example.androidplaceholder.presentation.fragments.PostsContainerFragment"
-        android:label="fragment_posts_container"
-        tools:layout="@layout/fragment_posts_container" >
+        android:id="@+id/photosContainerFragment"
+        android:name="com.example.androidplaceholder.presentation.fragments.PhotosContainerFragment"
+        android:label="PhotosContainerFragment" >
+        <action
+            android:id="@+id/action_photosContainerFragment_to_photoOpenFragment"
+            app:destination="@id/photoOpenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumsContainerFragment"
+        android:name="com.example.androidplaceholder.presentation.fragments.AlbumsContainerFragment"
+        android:label="AlbumsContainerFragment" >
         <action
             android:id="@+id/action_postsContainerFragment_to_postOpenFragment"
             app:destination="@id/postOpenFragment" />
@@ -22,25 +28,4 @@
         android:name="com.example.androidplaceholder.presentation.fragments.PostOpenFragment"
         android:label="fragment_post_open"
         tools:layout="@layout/fragment_post_open" />
-    <fragment
-        android:id="@+id/usersContainerFragment"
-        android:name="com.example.androidplaceholder.presentation.fragments.UsersContainerFragment"
-        android:label="fragment_users_container"
-        tools:layout="@layout/fragment_users_container" >
-        <action
-            android:id="@+id/action_usersContainerFragment_to_userProfileFragment2"
-            app:destination="@id/userProfileFragment2" />
-        <action
-            android:id="@+id/action_usersContainerFragment_to_postsContainerFragment"
-            app:destination="@id/postsContainerFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/userProfileFragment2"
-        android:name="com.example.androidplaceholder.presentation.fragments.UserProfileFragment"
-        android:label="fragment_user_profile"
-        tools:layout="@layout/fragment_user_profile" >
-        <action
-            android:id="@+id/action_userProfileFragment2_to_postOpenFragment"
-            app:destination="@id/postOpenFragment" />
-    </fragment>
 </navigation>

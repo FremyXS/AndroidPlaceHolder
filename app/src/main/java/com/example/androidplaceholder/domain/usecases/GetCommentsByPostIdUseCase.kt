@@ -7,7 +7,7 @@ import javax.inject.Inject
 class GetCommentsByPostIdUseCase
     @Inject
     constructor(
-        private val commentsRepository: ICommentsRepository,
+        private val commentsRepository: ICommentsRepository
     ): IGetCommentsByPostIdUseCase{
 
     override suspend operator fun invoke(idPost: Int): List<Comment> {

@@ -30,7 +30,7 @@ class PostsContainerAdapter(private val listener: Listener): ListAdapter<PostDef
         (holder as PostItem).bind(getItem(position), holder.itemView.context, listener)
     }
 
-    class PostItem(val bind: FragmentPostCardBinding): RecyclerView.ViewHolder(bind.root){
+    class PostItem(private val bind: FragmentPostCardBinding): RecyclerView.ViewHolder(bind.root){
         fun bind(post: PostDefault.PostInfo, context: Context, listener: Listener) = with(bind){
             titlePost.text = post.title
             bodyPost.text = post.body

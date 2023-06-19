@@ -7,9 +7,16 @@ import dagger.Module
 @Module
 abstract class UseCaseModule {
     @Binds
-    abstract fun getGetPostsUseCase(useCase: GetPostsUseCase): IGetPostsUseCase
+    abstract fun getPostsUseCase(useCase: GetPostsUseCase): IGetPostsUseCase
 
     @Binds
+    abstract fun getCommentsByPostIdUseCase(useCase: GetCommentsByPostIdUseCase): IGetCommentsByPostIdUseCase
+
+    @Binds
+    abstract fun getAlbumsUseCase(useCase: GetAlbumsUseCase): IGetAlbumsUseCase
+
+    @Binds
+    abstract fun getPhotosByAlbumIdUseCase(useCase: GetPhotosByAlbumIdUseCase): IGetPhotosByAlbumIdUseCase
     abstract fun getGetCommentsByPostIdUseCase(useCase: GetCommentsByPostIdUseCase): IGetCommentsByPostIdUseCase
 
     @Binds

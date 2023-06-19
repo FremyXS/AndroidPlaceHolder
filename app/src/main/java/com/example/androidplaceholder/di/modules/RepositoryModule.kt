@@ -18,4 +18,12 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun getUsersRepository(repository: UsersRepository): IUsersRepository
+
+    @Binds
+    @Singleton
+    abstract fun getAlbumsRepository(repository: AlbumsRepository): IAlbumsRepository
+
+    @Binds
+    @Singleton
+    abstract fun getPhotosRepository(repository: PhotosRepository): IPhotosRepository
 }

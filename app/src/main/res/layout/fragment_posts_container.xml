@@ -25,7 +25,7 @@
                 android:src="@drawable/posts_ic"
                 android:layout_gravity="end"
                 android:layout_marginEnd="8dp"/>
-
+                
         </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
 

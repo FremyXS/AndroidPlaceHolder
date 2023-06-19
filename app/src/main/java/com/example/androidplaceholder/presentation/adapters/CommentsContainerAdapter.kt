@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.androidplaceholder.data.models.Comment
 import com.example.androidplaceholder.databinding.FragmentCommentCardBinding
 
-class CommentsContainerAdapter: ListAdapter<Comment, RecyclerView.ViewHolder>(CommentViewHolder()) {
+class CommentsContainerAdapter :
+    ListAdapter<Comment, RecyclerView.ViewHolder>(CommentViewHolder()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val bind = FragmentCommentCardBinding.inflate(
@@ -23,15 +24,15 @@ class CommentsContainerAdapter: ListAdapter<Comment, RecyclerView.ViewHolder>(Co
         (holder as CommentItem).bind(getItem(position))
     }
 
-    class CommentItem(val bind: FragmentCommentCardBinding) : RecyclerView.ViewHolder(bind.root){
-        fun bind(comment: Comment) = with(bind){
+    class CommentItem(val bind: FragmentCommentCardBinding) : RecyclerView.ViewHolder(bind.root) {
+        fun bind(comment: Comment) = with(bind) {
             userName.text = comment.name
             commentBody.text = comment.body
             userEmail.text = comment.email
         }
     }
 
-    class CommentViewHolder(): DiffUtil.ItemCallback<Comment>(){
+    class CommentViewHolder : DiffUtil.ItemCallback<Comment>() {
         override fun areItemsTheSame(oldItem: Comment, newItem: Comment): Boolean {
             return oldItem == newItem
         }
