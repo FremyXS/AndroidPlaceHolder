@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.androidplaceholder.R
 import com.example.androidplaceholder.data.models.Photo
 import com.example.androidplaceholder.databinding.FragmentPhotoBigCardBinding
 import com.example.androidplaceholder.databinding.FragmentPhotoMinCardBinding
@@ -67,6 +68,7 @@ class PhotosContainerAdapter(private val listener: Listener) : ListAdapter<Photo
         fun bind(photo: Photo.PhotoBigger, context: Context, listener: Listener) = with(bind){
             Glide.with(context)
                 .load(photo.url)
+                .placeholder(R.drawable.animated_loading)
                 .into(imgPhoto)
 
             imgPhoto.setOnClickListener{
@@ -79,6 +81,7 @@ class PhotosContainerAdapter(private val listener: Listener) : ListAdapter<Photo
         fun bind(photo: Photo.PhotoBigger, context: Context, listener: Listener) = with(bind){
             Glide.with(context)
                 .load(photo.url)
+                .placeholder(R.drawable.animated_loading)
                 .into(imgPhoto)
 
             imgPhoto.setOnClickListener{

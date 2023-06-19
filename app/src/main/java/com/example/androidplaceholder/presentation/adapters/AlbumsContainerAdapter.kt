@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.androidplaceholder.R
 import com.example.androidplaceholder.data.models.AlbumDefault
 import com.example.androidplaceholder.databinding.FragmentAlbumCardBinding
 
@@ -32,6 +33,7 @@ class AlbumsContainerAdapter(private val listener: Listener) : ListAdapter<Album
             titleAlbum.text = album.title
             Glide.with(context)
                 .load(album.img)
+                .placeholder(R.drawable.animated_loading)
                 .into(imgAlbum)
             countPhotosAlbum.text = album.countPhotos.toString()
             userNameAlbum.text = album.userFullName

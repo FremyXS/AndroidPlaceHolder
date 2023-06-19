@@ -33,10 +33,9 @@ class PostOpenFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         bind = FragmentPostOpenBinding.inflate(inflater, container, false)
 
-//        commentViewModel = ViewModelProvider(this).get(CommentViewModel::class.java)
         commentsContainerAdapter = CommentsContainerAdapter()
 
         bindAdapter()

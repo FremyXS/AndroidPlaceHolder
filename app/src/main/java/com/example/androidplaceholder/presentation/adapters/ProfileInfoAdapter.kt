@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.androidplaceholder.R
 import com.example.androidplaceholder.data.models.ProfileInfo
 import com.example.androidplaceholder.data.models.UserDefault
 import com.example.androidplaceholder.databinding.FragmentProfileAlbumCardBinding
@@ -104,6 +105,7 @@ class ProfileInfoAdapter(private val listener: Listener): ListAdapter<ProfileInf
 
             Glide.with(context)
                 .load(profileInfo.img)
+                .placeholder(R.drawable.animated_loading)
                 .into(albumImageId)
 
             albumBtId.setOnClickListener {
