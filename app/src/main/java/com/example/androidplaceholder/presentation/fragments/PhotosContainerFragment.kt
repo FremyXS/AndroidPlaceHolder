@@ -46,6 +46,12 @@ class PhotosContainerFragment : Fragment(), PhotosContainerAdapter.Listener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        bind.topBar.title = arguments?.getString("albumTitle")!!
+
+        bind.topBar.setNavigationOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun bindAdapter() {

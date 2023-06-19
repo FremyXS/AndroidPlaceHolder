@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.androidplaceholder.R
 import com.example.androidplaceholder.databinding.FragmentPhotoOpenBinding
@@ -38,8 +39,13 @@ class PhotoOpenFragment : Fragment() {
             .load(arguments?.getString("photoUrl")!!)
             .into(bind.photoImgId)
 
+        bind.topBar.title = arguments?.getString("photoTitle")!!
         bind.photoTitleId.text = arguments?.getString("photoTitle")!!
         bind.photoUserId.text = arguments?.getString("photoUserFullName")!!
+
+        bind.topBar.setNavigationOnClickListener {
+            findNavController().popBackStack()
+        }
 
     }
 }

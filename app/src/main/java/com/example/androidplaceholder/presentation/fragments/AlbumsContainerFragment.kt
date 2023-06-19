@@ -62,6 +62,7 @@ class AlbumsContainerFragment : Fragment(), AlbumsContainerAdapter.Listener {
         val bundle = Bundle()
         bundle.putInt("albumId", album.id!!)
         bundle.putString("albumUserFullName", album.userFullName)
+        bundle.putString("albumTitle", album.title)
         findNavController().navigate(R.id.action_albumsContainerFragment_to_photosContainerFragment, bundle)
     }
 }
