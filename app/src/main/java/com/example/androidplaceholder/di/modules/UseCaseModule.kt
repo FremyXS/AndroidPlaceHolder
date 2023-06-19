@@ -17,6 +17,8 @@ abstract class UseCaseModule {
 
     @Binds
     abstract fun getPhotosByAlbumIdUseCase(useCase: GetPhotosByAlbumIdUseCase): IGetPhotosByAlbumIdUseCase
+
+    @Binds
     abstract fun getGetCommentsByPostIdUseCase(useCase: GetCommentsByPostIdUseCase): IGetCommentsByPostIdUseCase
 
     @Binds
