@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@drawable/profile_info_background">
+    android:background="@drawable/profile_info_background"
+    android:paddingHorizontal="10dp"
+    android:paddingVertical="5dp">
     <TextView
         android:id="@+id/info_label"
         android:layout_width="match_parent"

@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/profile_info_background"
+    android:paddingHorizontal="10dp"
+    android:paddingVertical="10dp"
  >
 
     <androidx.appcompat.widget.AppCompatButton
