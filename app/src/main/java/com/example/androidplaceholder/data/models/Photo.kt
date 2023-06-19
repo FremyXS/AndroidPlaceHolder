@@ -21,6 +21,10 @@ sealed class Photo(
         val url: String
     ) : Photo(albumId, id, title)
 
+    enum class PhotoType{
+        PhotoBig,
+        PhotoMin
+    }
     companion object {
         fun getSmallPhoto(photoRequest: PhotoRequest): PhotoSmaller {
             return PhotoSmaller(
