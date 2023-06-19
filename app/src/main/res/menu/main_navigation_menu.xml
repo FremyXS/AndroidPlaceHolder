@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_post_icon"
+        android:enabled="true"
+        android:title=""
+        android:icon="@drawable/posts_ic"/>
+    <item
+        android:id="@+id/menu_album_icon"
+        android:enabled="true"
+        android:title=""
+        android:icon="@drawable/images_ic"/>
+    <item
+        android:id="@+id/menu_profile_icon"
+        android:enabled="true"
+        android:title=""
+        android:icon="@drawable/users_ic"/>
+</menu>
