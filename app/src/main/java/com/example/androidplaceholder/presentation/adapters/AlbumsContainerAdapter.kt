@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.androidplaceholder.data.models.AlbumDefault
 import com.example.androidplaceholder.databinding.FragmentAlbumCardBinding
 
-class AlbumsContainerAdapter : ListAdapter<AlbumDefault.AlbumInfo, RecyclerView.ViewHolder>(
+class AlbumsContainerAdapter(private val listener: Listener) : ListAdapter<AlbumDefault.AlbumInfo, RecyclerView.ViewHolder>(
     PostDiffUtil()
 ) {
 
@@ -24,17 +24,21 @@ class AlbumsContainerAdapter : ListAdapter<AlbumDefault.AlbumInfo, RecyclerView.
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as AlbumItem).bind(getItem(position), holder.itemView.context)
+        (holder as AlbumItem).bind(getItem(position), holder.itemView.context, listener)
     }
 
     class AlbumItem(private val bind: FragmentAlbumCardBinding) : RecyclerView.ViewHolder(bind.root){
-        fun bind(album: AlbumDefault.AlbumInfo, context: Context) = with(bind) {
+        fun bind(album: AlbumDefault.AlbumInfo, context: Context, listener: Listener) = with(bind) {
             titleAlbum.text = album.title
             Glide.with(context)
                 .load(album.img)
                 .into(imgAlbum)
             countPhotosAlbum.text = album.countPhotos.toString()
             userNameAlbum.text = album.userFullName
+
+            albumId.setOnClickListener {
+                listener.onClick(album)
+            }
         }
     }
 
@@ -46,5 +50,9 @@ class AlbumsContainerAdapter : ListAdapter<AlbumDefault.AlbumInfo, RecyclerView.
         override fun areContentsTheSame(oldItem: AlbumDefault.AlbumInfo, newItem: AlbumDefault.AlbumInfo): Boolean {
             return oldItem == newItem
         }
+    }
+
+    interface Listener{
+        fun onClick(album: AlbumDefault.AlbumInfo)
     }
 }
