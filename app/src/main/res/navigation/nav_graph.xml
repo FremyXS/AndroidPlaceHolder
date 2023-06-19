@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/photosContainerFragment">
+    app:startDestination="@id/albumsContainerFragment">
 
 <!--    <fragment-->
 <!--        android:id="@+id/postsContainerFragment"-->
@@ -26,5 +26,22 @@
     <fragment
         android:id="@+id/photosContainerFragment"
         android:name="com.example.androidplaceholder.presentation.fragments.PhotosContainerFragment"
-        android:label="PhotosContainerFragment" />
+        android:label="PhotosContainerFragment" >
+        <action
+            android:id="@+id/action_photosContainerFragment_to_photoOpenFragment"
+            app:destination="@id/photoOpenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumsContainerFragment"
+        android:name="com.example.androidplaceholder.presentation.fragments.AlbumsContainerFragment"
+        android:label="AlbumsContainerFragment" >
+        <action
+            android:id="@+id/action_albumsContainerFragment_to_photosContainerFragment"
+            app:destination="@id/photosContainerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/photoOpenFragment"
+        android:name="com.example.androidplaceholder.presentation.fragments.PhotoOpenFragment"
+        android:label="fragment_photo_open"
+        tools:layout="@layout/fragment_photo_open" />
 </navigation>

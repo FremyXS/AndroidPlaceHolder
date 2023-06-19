@@ -11,7 +11,7 @@ import com.example.androidplaceholder.data.models.Photo
 import com.example.androidplaceholder.databinding.FragmentPhotoCardBinding
 
 
-class PhotosContainerAdapter : ListAdapter<Photo.PhotoBigger, RecyclerView.ViewHolder>(
+class PhotosContainerAdapter(private val listener: Listener) : ListAdapter<Photo.PhotoBigger, RecyclerView.ViewHolder>(
     PhotoViewHolder()
 ) {
 
@@ -25,15 +25,23 @@ class PhotosContainerAdapter : ListAdapter<Photo.PhotoBigger, RecyclerView.ViewH
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as PhotoItem).bind(getItem(position), holder.itemView.context)
+        (holder as PhotoItem).bind(getItem(position), holder.itemView.context, listener)
     }
 
     class PhotoItem(private val bind: FragmentPhotoCardBinding) : RecyclerView.ViewHolder(bind.root){
-        fun bind(photo: Photo.PhotoBigger, context: Context) = with(bind){
+        fun bind(photo: Photo.PhotoBigger, context: Context, listener: Listener) = with(bind){
             Glide.with(context)
                 .load(photo.url)
                 .into(imgPhoto)
+
+            imgPhoto.setOnClickListener{
+                listener.onClick(photo)
+            }
         }
+    }
+
+    interface Listener{
+        fun onClick(photo: Photo.PhotoBigger)
     }
 
     class PhotoViewHolder: DiffUtil.ItemCallback<Photo.PhotoBigger>(){

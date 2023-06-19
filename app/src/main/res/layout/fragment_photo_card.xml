@@ -8,10 +8,11 @@
     android:clickable="true"
     android:focusable="true">
 
-    <ImageView
+    <ImageButton
         android:id="@+id/img_photo"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:background="#00FFFFFF"
         android:src="@drawable/ic_android_black_24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
