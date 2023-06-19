@@ -1,7 +1,8 @@
 package com.example.androidplaceholder.domain.usecases
 
 import com.example.androidplaceholder.data.models.UserDefault
-import com.example.androidplaceholder.domain.repositories.IUsersRepository
+import com.example.androidplaceholder.domain.repositories.interfaces.IUsersRepository
+import com.example.androidplaceholder.domain.usecases.interfaces.IGetUsersUseCase
 import javax.inject.Inject
 
 class GetUsersUseCase

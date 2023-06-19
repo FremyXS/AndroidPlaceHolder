@@ -1,9 +1,10 @@
 package com.example.androidplaceholder.domain.usecases
 
 import com.example.androidplaceholder.data.models.ProfileInfo
-import com.example.androidplaceholder.domain.repositories.ICommentsRepository
-import com.example.androidplaceholder.domain.repositories.IPostsRepository
-import com.example.androidplaceholder.domain.repositories.IUsersRepository
+import com.example.androidplaceholder.domain.repositories.interfaces.ICommentsRepository
+import com.example.androidplaceholder.domain.repositories.interfaces.IPostsRepository
+import com.example.androidplaceholder.domain.repositories.interfaces.IUsersRepository
+import com.example.androidplaceholder.domain.usecases.interfaces.IGetPostsByUserIdUseCase
 import javax.inject.Inject
 
 class GetPostsByUserIdUseCase

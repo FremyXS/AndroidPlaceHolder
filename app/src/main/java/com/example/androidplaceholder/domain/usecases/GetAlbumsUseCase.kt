@@ -1,7 +1,10 @@
 package com.example.androidplaceholder.domain.usecases
 
 import com.example.androidplaceholder.data.models.AlbumDefault
-import com.example.androidplaceholder.domain.repositories.*
+import com.example.androidplaceholder.domain.repositories.interfaces.IAlbumsRepository
+import com.example.androidplaceholder.domain.repositories.interfaces.IPhotosRepository
+import com.example.androidplaceholder.domain.repositories.interfaces.IUsersRepository
+import com.example.androidplaceholder.domain.usecases.interfaces.IGetAlbumsUseCase
 import javax.inject.Inject
 
 class GetAlbumsUseCase

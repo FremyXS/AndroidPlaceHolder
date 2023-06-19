@@ -2,6 +2,7 @@ package com.example.androidplaceholder.domain.repositories
 
 import com.example.androidplaceholder.data.models.PostDefault
 import com.example.androidplaceholder.data.remote.RetrofitService
+import com.example.androidplaceholder.domain.repositories.interfaces.IPostsRepository
 import javax.inject.Inject
 
 class PostsRepository

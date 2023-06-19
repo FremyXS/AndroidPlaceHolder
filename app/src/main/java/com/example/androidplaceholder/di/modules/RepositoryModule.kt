@@ -1,6 +1,7 @@
 package com.example.androidplaceholder.di.modules
 
 import com.example.androidplaceholder.domain.repositories.*
+import com.example.androidplaceholder.domain.repositories.interfaces.*
 import dagger.Binds
 import dagger.Module
 import javax.inject.Singleton

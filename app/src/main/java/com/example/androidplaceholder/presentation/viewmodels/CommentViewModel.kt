@@ -4,8 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.androidplaceholder.data.models.Comment
-import com.example.androidplaceholder.domain.usecases.GetCommentsByPostIdUseCase
-import com.example.androidplaceholder.domain.usecases.IGetCommentsByPostIdUseCase
+import com.example.androidplaceholder.domain.usecases.interfaces.IGetCommentsByPostIdUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

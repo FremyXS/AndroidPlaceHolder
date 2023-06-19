@@ -1,14 +1,15 @@
 package com.example.androidplaceholder.domain.usecases
 
 import com.example.androidplaceholder.data.models.Photo
-import com.example.androidplaceholder.domain.repositories.IPhotosRepository
+import com.example.androidplaceholder.domain.repositories.interfaces.IPhotosRepository
+import com.example.androidplaceholder.domain.usecases.interfaces.IGetPhotosByAlbumIdUseCase
 import javax.inject.Inject
 
 class GetPhotosByAlbumIdUseCase
     @Inject
     constructor(
         private val photosRepository: IPhotosRepository
-        ): IGetPhotosByAlbumIdUseCase{
+        ): IGetPhotosByAlbumIdUseCase {
 
     private val temps = listOf<String>(
         "https://schtirlitz.ru/800/600/http/ic.pics.livejournal.com/dymontiger/54234047/23584433/23584433_original.jpg",

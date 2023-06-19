@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.androidplaceholder.data.models.AlbumDefault
-import com.example.androidplaceholder.domain.usecases.IGetAlbumsUseCase
+import com.example.androidplaceholder.domain.usecases.interfaces.IGetAlbumsUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

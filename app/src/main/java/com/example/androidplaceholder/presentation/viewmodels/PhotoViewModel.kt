@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.androidplaceholder.data.models.Photo
-import com.example.androidplaceholder.domain.usecases.IGetPhotosByAlbumIdUseCase
+import com.example.androidplaceholder.domain.usecases.interfaces.IGetPhotosByAlbumIdUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

@@ -2,6 +2,7 @@ package com.example.androidplaceholder.domain.repositories
 
 import com.example.androidplaceholder.data.models.AlbumDefault
 import com.example.androidplaceholder.data.remote.RetrofitService
+import com.example.androidplaceholder.domain.repositories.interfaces.IAlbumsRepository
 import javax.inject.Inject
 
 class AlbumsRepository

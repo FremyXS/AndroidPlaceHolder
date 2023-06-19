@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.androidplaceholder.data.models.UserDefault
-import com.example.androidplaceholder.domain.usecases.IGetUsersUseCase
+import com.example.androidplaceholder.domain.usecases.interfaces.IGetUsersUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
