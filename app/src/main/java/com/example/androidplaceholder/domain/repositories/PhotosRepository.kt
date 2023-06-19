@@ -2,6 +2,7 @@ package com.example.androidplaceholder.domain.repositories
 
 import com.example.androidplaceholder.data.models.Photo
 import com.example.androidplaceholder.data.remote.RetrofitService
+import com.example.androidplaceholder.domain.repositories.interfaces.IPhotosRepository
 import javax.inject.Inject
 
 class PhotosRepository

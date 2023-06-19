@@ -1,7 +1,10 @@
 package com.example.androidplaceholder.domain.usecases
 
 import com.example.androidplaceholder.data.models.PostDefault
-import com.example.androidplaceholder.domain.repositories.*
+import com.example.androidplaceholder.domain.repositories.interfaces.ICommentsRepository
+import com.example.androidplaceholder.domain.repositories.interfaces.IPostsRepository
+import com.example.androidplaceholder.domain.repositories.interfaces.IUsersRepository
+import com.example.androidplaceholder.domain.usecases.interfaces.IGetPostsUseCase
 import javax.inject.Inject
 
 class GetPostsUseCase
@@ -10,7 +13,7 @@ class GetPostsUseCase
         private val postRepository: IPostsRepository,
         private val usersRepository: IUsersRepository,
         private val commentsRepository: ICommentsRepository
-    ): IGetPostsUseCase{
+    ): IGetPostsUseCase {
 
     override suspend operator fun invoke(): MutableList<PostDefault.PostInfo> {
         val posts = postRepository.getPosts()

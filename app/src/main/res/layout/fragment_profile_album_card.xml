@@ -28,6 +28,8 @@
         android:layout_height="wrap_content"
         android:background="#83000000"
         android:text="Title"
+        android:maxLength="25"
+        android:maxLines="1"
         android:textColor="#fff"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

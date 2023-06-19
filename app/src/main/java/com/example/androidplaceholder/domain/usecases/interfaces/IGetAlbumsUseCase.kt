@@ -1,4 +1,4 @@
-package com.example.androidplaceholder.domain.usecases
+package com.example.androidplaceholder.domain.usecases.interfaces
 
 import com.example.androidplaceholder.data.models.AlbumDefault
 

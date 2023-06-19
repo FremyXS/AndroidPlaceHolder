@@ -4,8 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.androidplaceholder.data.models.ProfileInfo
-import com.example.androidplaceholder.domain.usecases.IGetAlbumsByUserIdUseCase
-import com.example.androidplaceholder.domain.usecases.IGetPostsByUserIdUseCase
+import com.example.androidplaceholder.domain.usecases.interfaces.IGetAlbumsByUserIdUseCase
+import com.example.androidplaceholder.domain.usecases.interfaces.IGetPostsByUserIdUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

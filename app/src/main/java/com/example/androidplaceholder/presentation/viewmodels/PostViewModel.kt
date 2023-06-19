@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.androidplaceholder.data.models.PostDefault
-import com.example.androidplaceholder.domain.usecases.IGetPostsUseCase
+import com.example.androidplaceholder.domain.usecases.interfaces.IGetPostsUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

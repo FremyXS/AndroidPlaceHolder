@@ -1,6 +1,7 @@
 package com.example.androidplaceholder.di.modules
 
 import com.example.androidplaceholder.domain.usecases.*
+import com.example.androidplaceholder.domain.usecases.interfaces.*
 import dagger.Binds
 import dagger.Module
 

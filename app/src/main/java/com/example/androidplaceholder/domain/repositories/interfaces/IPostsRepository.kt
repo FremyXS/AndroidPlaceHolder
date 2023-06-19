@@ -1,4 +1,4 @@
-package com.example.androidplaceholder.domain.repositories
+package com.example.androidplaceholder.domain.repositories.interfaces
 
 import com.example.androidplaceholder.data.models.PostDefault
 

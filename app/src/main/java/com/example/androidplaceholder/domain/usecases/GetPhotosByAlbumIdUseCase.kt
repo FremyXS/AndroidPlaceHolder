@@ -1,14 +1,15 @@
 package com.example.androidplaceholder.domain.usecases
 
 import com.example.androidplaceholder.data.models.Photo
-import com.example.androidplaceholder.domain.repositories.IPhotosRepository
+import com.example.androidplaceholder.domain.repositories.interfaces.IPhotosRepository
+import com.example.androidplaceholder.domain.usecases.interfaces.IGetPhotosByAlbumIdUseCase
 import javax.inject.Inject
 
 class GetPhotosByAlbumIdUseCase
     @Inject
     constructor(
         private val photosRepository: IPhotosRepository
-        ): IGetPhotosByAlbumIdUseCase{
+        ): IGetPhotosByAlbumIdUseCase {
 
     override suspend fun invoke(albumId: Int): List<Photo.PhotoBigger> {
         return photosRepository.getPhotosByAlbumId(albumId)
